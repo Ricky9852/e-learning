@@ -1,6 +1,9 @@
+import React from "react";
+import Home from "./components/Home";
+
 const App = ( props ) => {
   return (
-    <h1>E-Learning</h1>
+    <Home/>
   )
 }
 
