@@ -3,7 +3,9 @@ import NavBar from "./components/NavBar";
 
 const App = ( props ) => {
   return (
-    <NavBar/>
+    <div className = "container">
+      <NavBar />
+    </div>
   )
 }
 
