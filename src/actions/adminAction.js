@@ -8,7 +8,7 @@ export const startSetErrors = (errors) => {
 }
 
 export const startAddAdmin = (formData, redirect) => {
-    console.log(formData)
+    // console.log(formData)
     return (dispatch) => {
         axios.post('https://dct-e-learning.herokuapp.com/api/admin/register', formData)
                 .then( (response) => {
@@ -43,6 +43,7 @@ export const startLogAdmin = (formData, redirect) => {
                         alert(result.errors)
                     }else{
                         alert('successfully logged in')
+                        // console.log('login data',result)
                         localStorage.setItem('token', result.token)
                         dispatch(adminLogged())
                         redirect()
@@ -60,18 +61,16 @@ export const adminLogged = () => {
     }
 }
 
-export const startGetAdmin = (props) => {
+export const startGetAdmin = () => {
     return (dispatch) => {
-        if(!localStorage.getItem('token')) {
-            props.history.push('/')
-        }
         axios.get('https://dct-e-learning.herokuapp.com/api/admin/account', {
             headers: {
-                'x-auth': localStorage.getItem('token')
+                'Authorization': localStorage.getItem('token')
             }
         })
             .then((response) => {
                 const result = response.data
+                console.log(result)
                 dispatch(getAdmin(result))
             })
             .catch((err) => {
@@ -83,6 +82,38 @@ export const startGetAdmin = (props) => {
 export const getAdmin = result => {
     return {
         type: 'GET_ADMIN',
+        payload: result
+    }
+}
+
+export const startEditAdmin = (formData, handleToggle) => {
+    console.log('edit',formData)
+    return (dispatch) => {
+        axios.put('https://dct-e-learning.herokuapp.com/api/admin', formData, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+                .then( (response) => {
+                    const result = response.data
+                    if(result.hasOwnProperty('errors')) {
+                        alert(result.message)
+                    } else {
+                        alert('successfully edited an account')
+                        console.log('edited res',result)
+                        dispatch(editAdmin(result))
+                        handleToggle()
+                    }
+                })
+                .catch((err)=>{
+                    alert(err.message)
+                })
+    }
+}
+
+export const editAdmin = (result) => {
+    return {
+        type: 'EDIT_ADMIN',
         payload: result
     }
 }

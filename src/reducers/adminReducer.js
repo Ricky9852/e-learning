@@ -12,6 +12,9 @@ export const adminReducer = ( state = adminInitialState, action) => {
         case 'ADD_ADMIN': {
             return {...state}
         }
+        case 'EDIT_ADMIN': {
+            return {...state, data: {...action.payload}}
+        }
         case 'GET_ADMIN': {
             return {...state, data: {...action.payload}}
         }

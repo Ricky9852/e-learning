@@ -111,4 +111,115 @@ const Register = props => {
     )
 }
 
+// import React from 'react';
+// import { useFormik, yupToFormErrors } from 'formik';
+// import * as Yup from 'yup';
+
+// const Register = () => {
+//     const formik = useFormik({
+//         initialValues: {
+//             username: '',
+//             email: '',
+//             password: '',
+//             academy: {
+//                 name: '',
+//                 website: ''
+//         }
+//     },
+//     validationSchema: Yup.object({
+//         username: Yup.string()
+//             .max(15, 'Must be 15 characters or less')
+//             .required('Required'),
+//         email: Yup.string().email('Invalid email address').required('Required'),
+//         password: Yup.string()
+//             .max(20, 'Must be 20 characters or less')
+//             .required('Required'),
+//         academy: Yup.object({
+//             name: Yup.string()
+//             .max(15, 'Must be 15 characters or less')
+//             .required('Required'),
+//         })
+//     }),
+//     onSubmit: values => {
+//             alert(JSON.stringify(values, null, 2));
+//         },
+//     });
+
+//   return (
+//     <form onSubmit={formik.handleSubmit}>
+//         <label htmlFor="username">User Name</label>
+//         <input
+//             id="username"
+//             name="username"
+//             type="text"
+//             onChange={formik.handleChange}
+//             onBlur={formik.handleBlur}
+//             value={formik.values.username}
+//         />
+//         {formik.touched.username && formik.errors.username ? (
+//             <div>{formik.errors.username}</div>
+//         ) : null}
+//         <br />
+
+//         <label htmlFor="email">Email Address</label>
+//         <input
+//             id="email"
+//             name="email"
+//             type="email"
+//             onChange={formik.handleChange}
+//             onBlur={formik.handleBlur}
+//             value={formik.values.email}
+//         />
+//         {formik.touched.email && formik.errors.email ? (
+//             <div>{formik.errors.email}</div>
+//         ) : null}
+//         <br />
+
+//         <label htmlFor="password">password</label>
+//             <input
+//                 id="password"
+//                 name="password"
+//                 type="text"
+//                 onChange={formik.handleChange}
+//                 onBlur={formik.handleBlur}
+//                 value={formik.values.password}
+//             />
+//             {formik.touched.password && formik.errors.password ? (
+//                 <div>{formik.errors.password}</div>
+//             ) : null}
+//             <br />
+        
+//         {/* <label htmlFor="name">Adademy Name</label>
+//             <input
+//                 id="name"
+//                 name="name"
+//                 type="text"
+//                 onChange={formik.handleChange}
+//                 onBlur={formik.handleBlur}
+//                 value={formik.values.academy.name}
+//             />
+//             {formik.touched.academy.name && formik.errors.academy.name ? (
+//                 <div>{formik.errors.academy.name}</div>
+//             ) : null}
+//             <br /> */}
+
+//         {/* <label htmlFor="name">Adademy Website</label>
+//             <input
+//                 id="website"
+//                 name="website"
+//                 type="text"
+//                 onChange={formik.handleChange}
+//                 onBlur={formik.handleBlur}
+//                 value={formik.values.academy.website}
+//             />
+//             {formik.touched.academy.website && formik.errors.academy.website ? (
+//                 <div>{formik.errors.academy.website}</div>
+//             ) : null}
+//             <br /> */}
+
+//         <button type="submit">Submit</button>
+//     </form>
+//     );
+//     };
+
 export default Register;
