@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react";
 import validator from 'validator';
 import { useDispatch, useSelector } from "react-redux";
-import { startEditAdmin, startSetErrors } from "../actions/adminAction";
+import { startEditAdmin, startSetErrors } from "../../actions/adminAction";
 
 const EditAdmin = props => {
     const {handleToggle}=props

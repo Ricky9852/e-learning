@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import validator from "validator";
 import { useSelector,useDispatch } from "react-redux";
-import { startLogAdmin, startSetErrors } from "../actions/adminAction";
+import { startLogAdmin, startSetErrors } from "../../actions/adminAction";
 
 const Login = props => {
     const [email, setEmail] = useState('')

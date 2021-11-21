@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startGetAdmin } from "../actions/adminAction";
+import { startGetAdmin } from "../../actions/adminAction";
 import EditAdmin from "./EditAdmin";
 
 const Account = props => {

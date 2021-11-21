@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react";
 import validator from 'validator';
 import { useDispatch, useSelector } from "react-redux";
-import { startAddAdmin, startSetErrors } from "../actions/adminAction";
+import { startAddAdmin, startSetErrors } from "../../actions/adminAction";
 
 const Register = props => {
     const [username, setUsername] = useState('')
