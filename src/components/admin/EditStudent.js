@@ -5,7 +5,7 @@ import { startSetErrors } from "../../actions/adminAction";
 import { startAddStudent, startEditStudent } from "../../actions/adminStudentsAction"
 
 const EditStudent = props => {
-    const { handleEdit, student} = props
+    const { handleEdit, student, toggle} = props
     const [name, setName] = useState(student.name ? student.name : '')
     const [email, setEmail] = useState(student.email ? student.email : '')
     const [isAllowed,setIsAllowed] = useState(student.isAllowed ? student.isAllowed : true)
@@ -48,7 +48,8 @@ const EditStudent = props => {
                 email: email,
                 isAllowed: isAllowed
             }
-            dispatch(startEditStudent(formData, toggle))
+            dispatch(startEditStudent(formData))
+            handleEdit()
         }else{
             dispatch(startSetErrors(errors))
             alert(`There are following errors :

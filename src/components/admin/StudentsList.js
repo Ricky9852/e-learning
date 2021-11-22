@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startGetStudents } from "../../actions/adminStudentsAction";
+import { startGetStudents, startRemoveStudent } from "../../actions/adminStudentsAction";
 import { Link, Route, withRouter } from "react-router-dom";
 import StudentItem from "./StudentItem";
 
@@ -15,7 +15,7 @@ const StudentsList = props =>{
     },[])
 
     const handleRemove=(_id)=>{
-        // dispatch()
+        dispatch(startRemoveStudent(_id))
     }
     return (
         <div>
@@ -43,7 +43,6 @@ const StudentsList = props =>{
                                                 <td>{student.role}</td>
                                                 <td><Link to={`/students/list/${student._id}`}>Details</Link></td>
                                                 <td><button onClick={()=>{handleRemove(student._id)}}>Delete</button></td>
-                                                
                                             </tr>
                                 })}
                             </tbody>

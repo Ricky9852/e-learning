@@ -15,25 +15,25 @@ const StudentItem = props =>{
         return state.students.data
     })
     useEffect(()=>{
-        // axios.get(`https://dct-e-learning.herokuapp.com/api/students/${id}`, {
-        //     headers: {
-        //         'Authorization': localStorage.getItem('token')
-        //     }
-        // })
-        //     .then((response) => {
-        //         const result = response.data
-        //         console.log('studentitem',result)
-        //         setStudent(result)
-        //     })
-        //     .catch((err) => {
-        //         alert(err.message)
-        //     })
-        const result=students.find((ele)=>{
-            return ele._id===id
+        axios.get(`https://dct-e-learning.herokuapp.com/api/students/${id}`, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
         })
-        localStorage.removeItem('student')
-        localStorage.setItem('student',JSON.stringify(result))
-        // setStudent(JSON.parse(localStorage.getItem('student')))
+            .then((response) => {
+                const result = response.data
+                console.log('studentitem',result)
+                setStudent(result)
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+        // const result=students.find((ele)=>{
+        //     return ele._id===id
+        // })
+        // localStorage.removeItem('student')
+        // localStorage.setItem('student',JSON.stringify(result))
+        // // setStudent(JSON.parse(localStorage.getItem('student')))
     },[])
     // console.log(localStorage.getItem('student'));
     return (
@@ -49,11 +49,11 @@ const StudentItem = props =>{
                             <p>Password:{student.password}</p>
                             <p>Allowed:{String(student.isAllowed)}</p>
                             <p>Role:{student.role}</p>
-                            {/* <p>Courses:(
+                            <p>Courses:(
                                     {student.courses.map((course,i)=>{
                                         return <li key={i}>{course}</li>
                                     })}
-                                )</p> */}
+                                )</p>
                             <p>User:{student.user}</p>
                             <p>Created At:{student.createdAt}</p>
                             <p>Updated At:{student.updatedAt}</p>
@@ -62,7 +62,7 @@ const StudentItem = props =>{
                 </div>
             ):(
                 <div>
-                    <EditStudent student={student} handleEdit={handleEdit}/>
+                    <EditStudent student={student} handleEdit={handleEdit} toggle={toggle}/>
                 </div>
             )}
         </div>

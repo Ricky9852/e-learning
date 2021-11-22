@@ -23,11 +23,12 @@ export const adminStudentReducer = ( state = studentsInitialState, action) => {
                     return {...student}
                 }
             })
+            console.log(result)
             return {...state, data: [...result]}
         }
         case 'REMOVE_STUDENT': {
             const result = state.data.filter((student) => {
-                return student._id !== action.payload
+                return student._id !== action.payload._id
             })
             return {...state, data: [...result]}
         }
