@@ -29,6 +29,7 @@ const StudentsList = props =>{
                                     <th>No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Password</th>
                                     <th>Role</th>
                                     <th>Details</th>
                                     <th>Remove</th>
@@ -40,6 +41,7 @@ const StudentsList = props =>{
                                                 <td>{i+1}</td>
                                                 <td>{student.name}</td>
                                                 <td>{student.email}</td>
+                                                <td>{student.password}</td>
                                                 <td>{student.role}</td>
                                                 <td><Link to={`/students/list/${student._id}`}>Details</Link></td>
                                                 <td><button onClick={()=>{handleRemove(student._id)}}>Delete</button></td>

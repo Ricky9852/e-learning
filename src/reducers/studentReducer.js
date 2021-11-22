@@ -17,3 +17,20 @@ export const studentReducer = ( state = studentInitialState, action) => {
         }
     }
 }
+
+const initialIsLoggedIn = false
+
+export const studentLoggedReducer = (state = initialIsLoggedIn, action) => {
+    switch(action.type) {
+        case 'STUDENT_LOG': {
+            if(localStorage.getItem('stoken')) {
+                return true
+            }else {
+                return false
+            }
+        }
+        default: {
+            return state
+        }
+    }
+}

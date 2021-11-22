@@ -62,7 +62,7 @@ const StudentItem = props =>{
                 </div>
             ):(
                 <div>
-                    <EditStudent student={student} handleEdit={handleEdit} toggle={toggle}/>
+                    <EditStudent student={student} id={id} handleEdit={handleEdit} toggle={toggle}/>
                 </div>
             )}
         </div>

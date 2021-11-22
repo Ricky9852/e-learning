@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from "react";
 import validator from "validator";
 import { useSelector,useDispatch } from "react-redux";
-import { startLogAdmin, startSetErrors } from "../../actions/adminAction";
+import { startLogAdmin, startSetErrors } from "../actions/adminAction";
+import { startLogStudent } from "../actions/studentAction";
 
 const Login = props => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [adminButton, setAdminButton] = useState(true)
+    const [studentButton, setStudentButton] = useState(false)
 
     // const storeErrors = useSelector((state) => {
     //     return state.user.errors
     // })
 
     const dispatch = useDispatch()
+
+    const handleAdminButton = () =>{
+        setAdminButton(true)
+        setStudentButton(false)
+    }
+    const handleStudentButton = () =>{
+        setAdminButton(false)
+        setStudentButton(true)
+    }
 
     const errors = {}
 
@@ -38,7 +50,11 @@ const Login = props => {
                 email: email,
                 password: password
             }
-            dispatch(startLogAdmin(formData, redirect))
+            if(adminButton){
+                dispatch(startLogAdmin(formData, redirect))
+            }else if(studentButton){
+                dispatch(startLogStudent(formData, redirect))
+            }
         }else{
             dispatch(startSetErrors(errors))
             alert(`There are following errors : 
@@ -60,6 +76,7 @@ const Login = props => {
     return (
         <div>
             <h1>Login</h1>
+            <h3>User Type : </h3><button onClick={handleAdminButton}>Admin</button><button onClick={handleStudentButton}>Student</button>
             <form onSubmit = {handleSubmit} className = 'g-col-4'>
             <div className = 'mb-3' >
                 <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
