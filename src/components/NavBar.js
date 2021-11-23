@@ -14,51 +14,76 @@ const NavBar = ( props ) => {
     const isLoggedIn = useSelector((state) => {
         return state.isLoggedIn
     })
-    const studentIsLoggedIn = false
+    const studentIsLoggedIn = useSelector((state) => {
+        return state.studentIsLoggedIn
+    })
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(adminLogged())
+        dispatch(logStudent())
     }, [])
     return (
         <div>
-            <h1>NavBar</h1>
-            <Link to='/'><button className='btn btn-primary'>Home</button></Link>
-            {
-                isLoggedIn ? (
-                    <>
-                        <Link to = '/account'><button className='btn btn-primary'>Account</button></Link>
-                        <Link to = '/students'><button className='btn btn-primary'>Students</button></Link>
-                        <Link to = '#' onClick = {()=>{
-                            localStorage.removeItem('token')
-                            props.history.push('/')
-                            dispatch(adminLogged())
-                            alert('successfullly logged out')
-                        }}><button className='btn btn-primary'>Logout</button></Link>
-                    </>
-                ) : (
-                    <>
-                        {
-                            studentIsLoggedIn ? (
-                                <>  
-                                    <Link to='/student/courses'>Courses</Link>
-                                    <Link to = '#' onClick = {()=>{
-                                        localStorage.removeItem('stoken')
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li className="nav-item">
+                    <Link to='/' className='nav-link'>Home</Link>
+                    </li>
+                    {
+                        isLoggedIn ? (
+                            <>
+                                <li className="nav-item">
+                                    <Link to='/account' className='nav-link'>Account</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to='/students' className='nav-link'>Students</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to = '#' className='nav-link' onClick = {()=>{
+                                        localStorage.removeItem('token')
                                         props.history.push('/')
-                                        dispatch(logStudent())
+                                        dispatch(adminLogged())
                                         alert('successfullly logged out')
-                                    }}><button className='btn btn-primary'>Logout</button></Link>
-                                </>
-                            ) : (
-                                <>
-                                    <Link to = '/register'><button className='btn btn-primary'>Register</button></Link>
-                                    <Link to = '/login'><button className='btn btn-primary'>Login</button></Link>
-                                </>
-                            )
-                        }
-                    </>
-                )
-            }
-
+                                    }}>Logout</Link>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                {
+                                    studentIsLoggedIn ? (
+                                        <>  
+                                            <li className="nav-item">
+                                                <Link to='/student/courses' className='nav-link'>Courses</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link to = '#' className='nav-link' onClick = {()=>{
+                                                    localStorage.removeItem('stoken')
+                                                    props.history.push('/')
+                                                    dispatch(logStudent())
+                                                    alert('successfullly logged out')
+                                                }}>Logout</Link>
+                                            </li>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <li className="nav-item">
+                                                <Link to='/register' className='nav-link'>Register</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link to='/login' className='nav-link'>Login</Link>
+                                            </li>
+                                        </>
+                                    )
+                                }
+                            </>
+                        )
+                    }
+                </ul>
+                </div>
+            </div>
+            </nav>
             <Route path='/' component={Home} exact/>
             <Route path='/register' component={Register} exact/>
             <Route path='/login' component={Login} exact/>

@@ -76,7 +76,7 @@ const Login = props => {
     return (
         <div>
             <h1>Login</h1>
-            <h3>User Type : </h3><button onClick={handleAdminButton}>Admin</button><button onClick={handleStudentButton}>Student</button>
+            <h3>User Type : { (adminButton) ? <>Admin</> : <>Student</>}</h3><button onClick={handleAdminButton}>Admin</button><button onClick={handleStudentButton}>Student</button>
             <form onSubmit = {handleSubmit} className = 'g-col-4'>
             <div className = 'mb-3' >
                 <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
