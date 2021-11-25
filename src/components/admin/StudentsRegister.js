@@ -74,7 +74,7 @@ const StudentsRegister = props => {
     }
 
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             <h1>Register Student</h1>
             <form onSubmit = {handleSubmit} className = 'g-col-4'>
                 <div className = 'mb-3' >
@@ -86,7 +86,7 @@ const StudentsRegister = props => {
                 </div>
 
                 <div className = 'mb-3' >
-                    <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter student password"/>
+                    <input type = "text" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter student password"/>
                 </div>
 
                 <div className = 'mb-3' >

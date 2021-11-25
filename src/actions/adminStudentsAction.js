@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const startAddStudent = (formData) =>{
+    console.log('formdata for reg stu',formData)
     return (dispatch)=>{
         axios.post('https://dct-e-learning.herokuapp.com/api/admin/students', formData, {
             headers: {
@@ -13,7 +14,7 @@ export const startAddStudent = (formData) =>{
                         alert(result.message)
                     } else {
                         alert('successfully added a student')
-                        console.log('edited res',result)
+                        console.log('student reg response',result)
                         dispatch(addStudent())
                     }
                 })

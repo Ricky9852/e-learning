@@ -82,7 +82,7 @@ const Register = props => {
     }
 
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             <h1>Register</h1>
             <form onSubmit = {handleSubmit} className = 'g-col-4'>
                 <div className = 'mb-3' >

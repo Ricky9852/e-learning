@@ -12,6 +12,9 @@ store.subscribe( () => {
   console.log('state updated', store.getState())
 })
 
+document.body.style.backgroundColor = "#fcfcfc"; 
+let rootEle = document.getElementById('root');
+rootEle.className='component'
 
 ReactDOM.render(
   <BrowserRouter>

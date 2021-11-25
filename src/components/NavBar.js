@@ -6,7 +6,7 @@ import Account from "./admin/Account";
 import StudentsCRUD from "./admin/StudentsCRUD";
 import Home from "./Home";
 import Login from "./Login";
-import Courses from "./student/Courses"
+import Courses from "./courses/Courses"
 import Register from "./admin/Register";
 import { logStudent } from "../actions/studentAction";
 
@@ -24,12 +24,15 @@ const NavBar = ( props ) => {
     }, [])
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
             <div className="container-fluid">
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <div className="collapse navbar-collapse" id="navbarSupportedContent" >
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0" >
                     <li className="nav-item">
-                    <Link to='/' className='nav-link'>Home</Link>
+                        <Link to='/' className='nav-link'><h4 style={{color:'white'}}>EduComm</h4></Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to='/' className='nav-link'>Home</Link>
                     </li>
                     {
                         isLoggedIn ? (
@@ -39,6 +42,9 @@ const NavBar = ( props ) => {
                                 </li>
                                 <li className="nav-item">
                                     <Link to='/students' className='nav-link'>Students</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to='/courses' className='nav-link'>Courses</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to = '#' className='nav-link' onClick = {()=>{
@@ -55,7 +61,7 @@ const NavBar = ( props ) => {
                                     studentIsLoggedIn ? (
                                         <>  
                                             <li className="nav-item">
-                                                <Link to='/student/courses' className='nav-link'>Courses</Link>
+                                                <Link to='/courses' className='nav-link'>Courses</Link>
                                             </li>
                                             <li className="nav-item">
                                                 <Link to = '#' className='nav-link' onClick = {()=>{
@@ -87,9 +93,9 @@ const NavBar = ( props ) => {
             <Route path='/' component={Home} exact/>
             <Route path='/register' component={Register} exact/>
             <Route path='/login' component={Login} exact/>
-            <Route path='/students' component={StudentsCRUD}/>
+            <Route path='/students' component={StudentsCRUD} />
             <Route path='/account' component={Account} exact/>
-            <Route path='/student/courses' component={Courses} exact/>
+            <Route path='/courses' component={Courses} />
         </div>
     )
 }

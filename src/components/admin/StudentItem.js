@@ -38,34 +38,38 @@ const StudentItem = props =>{
     // console.log(localStorage.getItem('student'));
     return (
         <div>
-            <h2>Student Details</h2>
-            <button onClick={handleEdit}>Edit</button>
-            {toggle ? (
-                <div>
-                    {Object.keys(student).length>0 && (
-                        <div>
-                            <p>Name:{student.name}</p>
-                            <p>Email:{student.email}</p>
-                            <p>Password:{student.password}</p>
-                            <p>Allowed:{String(student.isAllowed)}</p>
-                            <p>Role:{student.role}</p>
-                            <p>Courses:(
-                                    {student.courses.map((course,i)=>{
-                                        return <li key={i}>{course}</li>
-                                    })}
-                                )</p>
-                            <p>User:{student.user}</p>
-                            <p>Created At:{student.createdAt}</p>
-                            <p>Updated At:{student.updatedAt}</p>
-                        </div>
-                    )}
-                </div>
-            ):(
-                <div>
-                    <EditStudent student={student} id={id} handleEdit={handleEdit} toggle={toggle}/>
-                </div>
-            )}
+            {/* <button onClick={props.history.push('/students')}>Back</button> */}
+            <div style={{textAlign:'center'}}>
+                <h2>Student Details</h2>
+                <button onClick={handleEdit}>Edit</button>
+                {toggle ? (
+                    <div>
+                        {Object.keys(student).length>0 && (
+                            <div>
+                                <p>Name:{student.name}</p>
+                                <p>Email:{student.email}</p>
+                                {/* <p>Password:{student.password}</p> */}
+                                <p>Allowed:{String(student.isAllowed)}</p>
+                                <p>Role:{student.role}</p>
+                                <p>Courses:
+                                        {student.courses.map((course,i)=>{
+                                            return <li key={i}>{course}</li>
+                                        })}
+                                </p>
+                                <p>User:{student.user}</p>
+                                {/* <p>Created At:{student.createdAt}</p> */}
+                                {/* <p>Updated At:{student.updatedAt}</p> */}
+                            </div>
+                        )}
+                    </div>
+                ):(
+                    <div>
+                        <EditStudent student={student} id={id} handleEdit={handleEdit} toggle={toggle}/>
+                    </div>
+                )}
+            </div>
         </div>
+        
     )
 }
 
