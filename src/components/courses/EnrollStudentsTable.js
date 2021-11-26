@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startGetStudents, startRemoveStudent } from "../../actions/adminStudentsAction";
-import { Link, Route, withRouter } from "react-router-dom";
+import { startGetStudents } from "../../actions/adminStudentsAction";
 
-const StudentsList = props =>{
+const EnrollStudentsTable = props =>{
+    const { handleEnroll, handleUnEnroll } = props
     const dispatch=useDispatch()
     const students = useSelector((state)=>{
         return state.students.data
     })
     useEffect(()=>{
         dispatch(startGetStudents())
-        console.log('studs',students)
     },[])
 
-    const handleRemove=(_id)=>{
-        dispatch(startRemoveStudent(_id))
-    }
     return (
         <div>
-            <h2>Students List</h2>
             {
                 students.length>0 && (
                     <div>
@@ -28,9 +23,6 @@ const StudentsList = props =>{
                                     <th>No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    {/* <th>Password</th> */}
-                                    <th>Role</th>
-                                    <th>Details</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -40,10 +32,7 @@ const StudentsList = props =>{
                                                 <td>{i+1}</td>
                                                 <td>{student.name}</td>
                                                 <td>{student.email}</td>
-                                                {/* <td>{student.password}</td> */}
-                                                <td>{student.role}</td>
-                                                <td><Link to={`/students/list/${student._id}`}>Details</Link></td>
-                                                <td><button onClick={()=>{handleRemove(student._id)}}>Delete</button></td>
+                                                <td><button onClick={()=>{handleEnroll(student._id)}}>Enroll</button><button onClick={()=>{handleUnEnroll(student._id)}}>Un-Enroll</button></td>
                                             </tr>
                                 })}
                             </tbody>
@@ -51,10 +40,8 @@ const StudentsList = props =>{
                     </div>
                 )
             }
-            {/* <Route path='/students/list/:id' component={StudentItem} exact/> */}
         </div>
     )
 }
 
-const WrapperComponent = withRouter(StudentsList)
-export default WrapperComponent;
+export default EnrollStudentsTable

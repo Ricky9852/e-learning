@@ -3,9 +3,10 @@ import { BrowserRouter } from "react-router-dom";
 import AdminNav from './AdminNav'
 
 const StudentsCRUD = props =>{
+    // const { props } = props
     return (
         <div style={{textAlign:'center'}}>
-            <AdminNav />
+            <AdminNav props={props}/>
         </div>
     )
 }

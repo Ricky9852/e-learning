@@ -14,7 +14,7 @@ const AdminNav = props =>{
             <Route path='/students/register' exact component={StudentsRegister} />
             <Route path='/students/list' exact component={StudentsList} />
             <Route path='/students/list/:id' component={StudentItem} exact/>
-            
+
         </div>
     )
 }

@@ -9,7 +9,10 @@ const AddForm = props =>{
         dispatch(startAddCourses(formData))
     }
     return (
-        <CoursesForm handleSubmit={handleSubmit}/>
+        <div style={{textAlign:'center'}}>
+            <h1>Add New Course</h1>
+            <CoursesForm handleSubmit={handleSubmit}/>
+        </div>
     )
 }
 

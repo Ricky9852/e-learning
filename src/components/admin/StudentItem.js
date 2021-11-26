@@ -51,12 +51,14 @@ const StudentItem = props =>{
                                 {/* <p>Password:{student.password}</p> */}
                                 <p>Allowed:{String(student.isAllowed)}</p>
                                 <p>Role:{student.role}</p>
-                                <p>Courses:
-                                        {student.courses.map((course,i)=>{
-                                            return <li key={i}>{course}</li>
+                                <div>Courses:
+                                    <ul>
+                                        {student.courses.map((ele,i)=>{
+                                            return <li key={i}>{ele.course}</li>
                                         })}
-                                </p>
-                                <p>User:{student.user}</p>
+                                    </ul>
+                                </div>
+                                {/* <p>User:{student.user}</p> */}
                                 {/* <p>Created At:{student.createdAt}</p> */}
                                 {/* <p>Updated At:{student.updatedAt}</p> */}
                             </div>

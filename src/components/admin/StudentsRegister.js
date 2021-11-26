@@ -95,7 +95,7 @@ const StudentsRegister = props => {
                     <input type="radio" value="false" name="isAllowed" checked={isAllowed==false} onChange={handleChange} />  No
                 </div>
 
-                <input type = "submit" value = "Register" />
+                <input type = "submit" value = "Register" className="btn btn-secondary"/>
             </form>
         </div>
     )

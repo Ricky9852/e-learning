@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+// import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureState from './store/configureState';
@@ -12,7 +13,8 @@ store.subscribe( () => {
   console.log('state updated', store.getState())
 })
 
-document.body.style.backgroundColor = "#fcfcfc"; 
+document.body.style.background = " url('https://www.teahub.io/photos/full/35-353578_university-and-school-education-concept-with-e-learning.jpg') no-repeat "; 
+// document.body.style.backgroundImage= "" 
 let rootEle = document.getElementById('root');
 rootEle.className='component'
 

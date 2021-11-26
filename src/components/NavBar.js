@@ -9,6 +9,14 @@ import Login from "./Login";
 import Courses from "./courses/Courses"
 import Register from "./admin/Register";
 import { logStudent } from "../actions/studentAction";
+import AdminCoursesList from "./courses/AdminCoursesList";
+import StudentCoursesList from "./courses/StudentCoursesList";
+import AddForm from "./courses/AddForm";
+import AdminCourseItem from "./courses/AdminCourseItem";
+import StudentsRegister from "./admin/StudentsRegister";
+import StudentsList from "./admin/StudentsList";
+import StudentItem from "./admin/StudentItem";
+import PrivateRoute from "./PrivateRoute"
 
 const NavBar = ( props ) => {
     const isLoggedIn = useSelector((state) => {
@@ -93,9 +101,16 @@ const NavBar = ( props ) => {
             <Route path='/' component={Home} exact/>
             <Route path='/register' component={Register} exact/>
             <Route path='/login' component={Login} exact/>
-            <Route path='/students' component={StudentsCRUD} />
-            <Route path='/account' component={Account} exact/>
-            <Route path='/courses' component={Courses} />
+            <PrivateRoute path='/students' isLoggedIn={isLoggedIn} component={<StudentsCRUD props={props}/>} />
+            {/* <PrivateRoute path='/students/register' isLoggedIn={isLoggedIn} exact={true} component={<StudentsRegister/>} />
+            <PrivateRoute path='/students/list' isLoggedIn={isLoggedIn} exact={true} component={<StudentsList props={props}/>} />
+            <PrivateRoute path='/students/list/:id' isLoggedIn={isLoggedIn} component={<StudentItem id={props.match.params}/>} exact={true}/> */}
+            <PrivateRoute path='/account' isLoggedIn={isLoggedIn} component={<Account/>} exact={true}/>
+            <PrivateRoute path='/courses' isLoggedIn={isLoggedIn} component={<Courses/>} />
+            {/* <PrivateRoute path = '/courses/admin-course-list' isLoggedIn={isLoggedIn} exact={true} component = {<AdminCoursesList/>}/>
+            <PrivateRoute path = '/courses/student-course-list' isLoggedIn={isLoggedIn} exact={true} component = {<StudentCoursesList/>}/>
+            <PrivateRoute path ='/courses/addcourse' isLoggedIn={isLoggedIn} component = {<AddForm/>} exact={true}/>
+            <PrivateRoute path = '/courses/admin-course-list/:id' isLoggedIn={isLoggedIn} exact={true} component = {<AdminCourseItem/>}/> */}
         </div>
     )
 }

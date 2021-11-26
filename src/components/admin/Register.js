@@ -82,32 +82,40 @@ const Register = props => {
     }
 
     return (
-        <div style={{textAlign:'center'}}>
-            <h1>Register</h1>
-            <form onSubmit = {handleSubmit} className = 'g-col-4'>
-                <div className = 'mb-3' >
-                    <input type = "text" value = {username} placeholder = 'enter your username' name = 'username' onChange = {handleChange} /> 
-                </div>
+        <div className="row">
+            <div className="col-md-4">
+            </div>
+                <div className="col-md-4 card bg-light" style={{textAlign:'center', width:"400px"}}>
+                <div className="card-body" >
+                <h1>Register</h1>
+                <form onSubmit = {handleSubmit} className = 'g-col-4'>
+                    <div className = 'mb-3' >
+                        <input type = "text" value = {username} placeholder = 'enter your username' name = 'username' onChange = {handleChange} /> 
+                    </div>
 
-                <div className = 'mb-3' >
-                    <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
-                </div>
+                    <div className = 'mb-3' >
+                        <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
+                    </div>
 
-                <div className = 'mb-3' >
-                    <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password"/>
-                </div>
+                    <div className = 'mb-3' >
+                        <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password"/>
+                    </div>
 
-                <div className = 'mb-3' >
-                    <input type = "text" value = {academy.name} placeholder = 'enter the academy name' name = 'academyName' onChange = {handleChange} /> 
-                </div>
+                    <div className = 'mb-3' >
+                        <input type = "text" value = {academy.name} placeholder = 'enter the academy name' name = 'academyName' onChange = {handleChange} /> 
+                    </div>
 
-                <div className = 'mb-3' >
-                    <input type = "text" value = {academy.website} placeholder = 'enter the academy website' name = 'academyWebsite' onChange = {handleChange} /> 
-                </div>
+                    <div className = 'mb-3' >
+                        <input type = "text" value = {academy.website} placeholder = 'enter the academy website' name = 'academyWebsite' onChange = {handleChange} /> 
+                    </div>
 
-                <input type = "submit" value = "Register" />
-            </form>
+                    <input type = "submit" value = "Register" className="btn btn-secondary"/>
+                </form>
+                </div>
+            </div>
+            <div className="col-md-4"></div>
         </div>
+        
     )
 }
 

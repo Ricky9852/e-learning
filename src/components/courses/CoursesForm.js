@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { startAddCourses } from "../../actions/adminCoursesActions";
 
 const CoursesForm = props => {
-    const { handleSubmit } = props
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [duration, setDuration] = useState('')
-    const [releaseDate, setReleaseDate] = useState('')
-    const [category, setCategory] = useState('')
-    const [validity, setValidity] = useState('')
-    const [level, setLevel] = useState('')
-    const [author, setAuthor] = useState('')
-
+    const { handleSubmit,id: _id, name: cName, description: cDescription, duration: cDuration, releaseDate: cReleaseDate, category: cCategory, validity: cValidity, level: cLevel, author: cAuthor, isDelete} = props
+    const [name, setName] = useState( cName ? cName : '' )
+    const [description, setDescription] = useState( cDescription ? cDescription : '' )
+    const [duration, setDuration] = useState( cDuration ? cDuration : '' )
+    const [releaseDate, setReleaseDate] = useState( '' )
+    const [category, setCategory] = useState( cCategory ? cCategory : '' )
+    const [validity, setValidity] = useState( cValidity ? cValidity : '' )
+    const [level, setLevel] = useState( cLevel ? cLevel : '' )
+    const [author, setAuthor] = useState( cAuthor ? cAuthor : '' )
+    console.log("id",_id)
     // const storeErrors = useSelector((state) => {
     //     return state.user.errors
     // })
@@ -39,15 +39,17 @@ const CoursesForm = props => {
     //     }
     // }
 
-    const handleSubmit = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault()
         // runValidations()
-        const redirect = () => {
-            // props.history.push('/courses')
-        }
+        // const redirect = () => {
+        //     props.history.push('/courses')
+        // }
         if(Object.keys(errors).length === 0){
             const formData = {
-                name: name,
+                _id,
+                isDelete,
+                name,
                 description,
                 duration,
                 releaseDate,
@@ -56,7 +58,8 @@ const CoursesForm = props => {
                 level,
                 author
             }
-            handleSubmit(formData)
+            console.log('form data in course',formData)
+            handleSubmit(formData, _id)
         }else{
             alert(`There are following errors :
             ${Boolean(errors['name']) ? errors['name'] : ''}
@@ -88,14 +91,13 @@ const CoursesForm = props => {
 
     return (
         <div style={{textAlign:'center'}}>
-            <h1>Add New Course</h1>
-            <form onSubmit = {handleSubmit} className = 'g-col-4'>
+            <form onSubmit = {handleFormSubmit} className = 'g-col-4'>
                 <div className = 'mb-3' >
                     <input type = "text" value = {name} placeholder = 'enter course name*' name = 'name' onChange = {handleChange} /> 
                 </div>
 
                 <div className = 'mb-3' >
-                    <input type value = {description} placeholder = 'enter course description*' name = 'description' onChange = {handleChange} /> 
+                    <input type="text" value = {description} placeholder = 'enter course description*' name = 'description' onChange = {handleChange} /> 
                 </div>
 
                 <div className = 'mb-3' >

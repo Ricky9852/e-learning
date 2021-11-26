@@ -74,20 +74,26 @@ const Login = props => {
     }
 
     return (
-        <div style={{textAlign:'center'}}>
-            <h1>Login</h1>
-            <h3>User Type : { (adminButton) ? <>Admin</> : <>Student</>}</h3><button onClick={handleAdminButton}>Admin</button><button onClick={handleStudentButton}>Student</button>
-            <form onSubmit = {handleSubmit} className = 'g-col-4' >
-            <div className = 'mb-3' >
-                <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
+        <div className="row ">
+            <div className="col-md-4">
             </div>
+                <div className="col-md-4 card bg-light" style={{textAlign:'center', width:"400px"}}>
+                <div className="card-body" >
+                    <h1>Login</h1>
+                    <h3>User Type : { (adminButton) ? <>Admin</> : <>Student</>}</h3><button className="btn btn-outline-info" onClick={handleAdminButton}>Admin</button><button className="btn btn-outline-info" onClick={handleStudentButton}>Student</button>
+                    <form onSubmit = {handleSubmit} className = 'g-col-4' >
+                        <div className = 'mb-3' >
+                            <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
+                        </div>
 
-            <div className = 'mb-3'>
-                <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password"/>
+                        <div className = 'mb-3'>
+                            <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password"/>
+                        </div>
+                        <input type = "submit" value = "Login" className="btn btn-secondary"/>
+                    </form>
+                </div>
             </div>
-
-                <input type = "submit" value = "Login" />
-            </form>
+            <div className="col-md-4"></div>
         </div>
     )
 }
