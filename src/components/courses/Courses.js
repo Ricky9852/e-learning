@@ -27,7 +27,7 @@ const Courses = ( props ) => {
                 <Link to = '/courses/admin-course-list'><button className = 'btn btn-primary'>Course List</button></Link>
                 <Link to = '/courses/addcourse'><button className = 'btn btn-primary'>Add New Course</button></Link>
             </div> }
-            { studentIsLoggedIn && <Link to = '/courses/student-course-list'>Course List</Link> }
+            { studentIsLoggedIn && <Link to = '/courses/student-course-list'><button className = 'btn btn-primary'>Course List</button></Link> }
 
             <Route path = '/courses/admin-course-list' exact component = {AdminCoursesList}/>
             <Route path = '/courses/student-course-list' exact component = {StudentCoursesList}/>

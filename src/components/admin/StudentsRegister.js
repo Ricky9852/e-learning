@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import validator from 'validator';
 import { useDispatch, useSelector } from "react-redux";
 import { startSetErrors } from "../../actions/adminAction";
-import { startAddStudent } from "../../actions/adminStudentsAction"
+import { startAddStudent, startStudentSetErrors } from "../../actions/adminStudentsAction"
 
 const StudentsRegister = props => {
     const [name, setName] = useState('')
@@ -10,9 +10,9 @@ const StudentsRegister = props => {
     const [password, setPassword] = useState('')
     const [isAllowed,setIsAllowed] = useState(true)
 
-    // const storeErrors = useSelector((state) => {
-    //     return state.user.errors
-    // })
+    const adminErrors = useSelector((state) => {
+        return state.students.errors
+    })
     const dispatch = useDispatch()
 
     const errors = {}
@@ -42,7 +42,7 @@ const StudentsRegister = props => {
             props.history.push('/students')
         }
         if(Object.keys(errors).length === 0){
-            dispatch(startSetErrors({}))
+            dispatch(startStudentSetErrors({}))
             const formData = {
                 name: name,
                 email: email,
@@ -51,11 +51,11 @@ const StudentsRegister = props => {
             }
             dispatch(startAddStudent(formData))
         }else{
-            dispatch(startSetErrors(errors))
-            alert(`There are following errors :
-            ${Boolean(errors['name']) ? errors['name'] : ''}
-            ${Boolean(errors['email']) ? errors['email'] : ''}
-            ${Boolean(errors['password']) ? errors['password'] : ''}`)
+            dispatch(startStudentSetErrors(errors))
+            // alert(`There are following errors :
+            // ${Boolean(errors['name']) ? errors['name'] : ''}
+            // ${Boolean(errors['email']) ? errors['email'] : ''}
+            // ${Boolean(errors['password']) ? errors['password'] : ''}`)
         }
         
     }
@@ -75,28 +75,32 @@ const StudentsRegister = props => {
 
     return (
         <div style={{textAlign:'center'}}>
-            <h1>Register Student</h1>
-            <form onSubmit = {handleSubmit} className = 'g-col-4'>
-                <div className = 'mb-3' >
-                    <input type = "text" value = {name} placeholder = 'enter student name' name = 'name' onChange = {handleChange} /> 
+            <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+                <div className="card-body" >
+                <h1>Register Student</h1>
+                <form onSubmit = {handleSubmit} className = 'g-col-4'>
+                    <div className = 'mb-3' >
+                        <input type = "text" value = {name} placeholder = 'enter student name' name = 'name' onChange = {handleChange} /> <br/>
+                        { adminErrors.name && <span style={{color:'red'}}>{adminErrors.name}</span> } 
+                    </div>
+                    <div className = 'mb-3' >
+                        <input type = "text" value = {email} placeholder = 'enter student email' name = 'email' onChange = {handleChange} /> <br/>
+                        { adminErrors.email && <span style={{color:'red'}}>{adminErrors.email}</span> } 
+                    </div>
+                    <div className = 'mb-3' >
+                        <input type = "text" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter student password"/><br/>
+                        { adminErrors.password && <span style={{color:'red'}}>{adminErrors.password}</span> } 
+                    </div>
+                    <div className = 'mb-3' >
+                        <label>Allowed : </label>
+                        <input type="radio" value="true" name="isAllowed" checked={isAllowed==true} onChange={handleChange} />  Yes
+                        <input type="radio" value="false" name="isAllowed" checked={isAllowed==false} onChange={handleChange} />  No<br/>
+                        { adminErrors.isAllowed && <span style={{color:'red'}}>{adminErrors.isAllowed}</span> } 
+                    </div>
+                    <button className="btn btn-outline-success" onClick={handleSubmit}>Register</button>
+                </form>
                 </div>
-
-                <div className = 'mb-3' >
-                    <input type = "text" value = {email} placeholder = 'enter student email' name = 'email' onChange = {handleChange} /> 
-                </div>
-
-                <div className = 'mb-3' >
-                    <input type = "text" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter student password"/>
-                </div>
-
-                <div className = 'mb-3' >
-                    <label>Allowed : </label>
-                    <input type="radio" value="true" name="isAllowed" checked={isAllowed==true} onChange={handleChange} />  Yes
-                    <input type="radio" value="false" name="isAllowed" checked={isAllowed==false} onChange={handleChange} />  No
-                </div>
-
-                <input type = "submit" value = "Register" className="btn btn-secondary"/>
-            </form>
+            </div>
         </div>
     )
 }

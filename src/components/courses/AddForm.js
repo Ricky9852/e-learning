@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { startAddCourses } from "../../actions/adminCoursesActions";
+import { startAddCourses } from "../../actions/adminCoursesAction";
 import CoursesForm from "./CoursesForm";
 
 const AddForm = props =>{

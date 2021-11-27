@@ -10,9 +10,9 @@ const Login = props => {
     const [adminButton, setAdminButton] = useState(true)
     const [studentButton, setStudentButton] = useState(false)
 
-    // const storeErrors = useSelector((state) => {
-    //     return state.user.errors
-    // })
+    const adminErrors = useSelector((state) => {
+        return state.admin.errors
+    })
 
     const dispatch = useDispatch()
 
@@ -57,9 +57,9 @@ const Login = props => {
             }
         }else{
             dispatch(startSetErrors(errors))
-            alert(`There are following errors : 
-            ${Boolean(errors['email']) ? errors['email'] : ''}
-            ${Boolean(errors['password']) ? errors['password'] : ''}`)
+            // alert(`There are following errors : 
+            // ${Boolean(errors['email']) ? errors['email'] : ''}
+            // ${Boolean(errors['password']) ? errors['password'] : ''}`)
         }
         
     }
@@ -74,26 +74,25 @@ const Login = props => {
     }
 
     return (
-        <div className="row ">
-            <div className="col-md-4">
-            </div>
-                <div className="col-md-4 card bg-light" style={{textAlign:'center', width:"400px"}}>
+        <div>
+                <div className="col-md-4 card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
                 <div className="card-body" >
                     <h1>Login</h1>
                     <h3>User Type : { (adminButton) ? <>Admin</> : <>Student</>}</h3><button className="btn btn-outline-info" onClick={handleAdminButton}>Admin</button><button className="btn btn-outline-info" onClick={handleStudentButton}>Student</button>
                     <form onSubmit = {handleSubmit} className = 'g-col-4' >
                         <div className = 'mb-3' >
-                            <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
+                            <input type = "text" value = {email} placeholder = 'enter your email*' name = 'email' onChange = {handleChange} /> <br/>
+                        { adminErrors.email && <span style={{color:'red'}}>{adminErrors.email}</span> } 
                         </div>
 
                         <div className = 'mb-3'>
-                            <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password"/>
+                            <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password*"/><br/>
+                        { adminErrors.password && <span style={{color:'red'}}>{adminErrors.password}</span> } 
                         </div>
-                        <input type = "submit" value = "Login" className="btn btn-secondary"/>
+                        <button className="btn btn-outline-success" onClick={handleSubmit}>Login</button>
                     </form>
                 </div>
             </div>
-            <div className="col-md-4"></div>
         </div>
     )
 }

@@ -21,21 +21,27 @@ const Account = props => {
         setToggle(!toggle)
     }
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             {Object.keys(admin).length>0 &&
             <div>
                 <h1>User Account</h1>
-                <button onClick={handleToggle}>edit</button>
+                <button className="btn btn-outline-primary" onClick={handleToggle}>Edit</button>
                 {toggle ? (
                     <div>
                         <EditAdmin handleToggle={handleToggle}/>
                     </div>
                 ) : (
                     <div>
-                        <p>email-{admin.email}</p>
-                        <p>username-{admin.username}</p>
-                        <p>role-{admin.role}</p>
-                        <p>academy name-{admin.academy.name}</p>
+                        <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+                            <div className="card-body" >
+                                <h1>Admin Details</h1>
+                                <p>Username-{admin.username}</p>
+                                <p>Email-{admin.email}</p>
+                                <p>Academy Name-{admin.academy.name}</p>
+                                <p>Academy Website-{admin.academy.website}</p>
+                                <p>Role-{admin.role}</p>
+                            </div>
+                        </div>
                     </div>
                 )}
                 {/* <div className = "card text-white bg-dark mb-3">

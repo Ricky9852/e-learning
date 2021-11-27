@@ -1,5 +1,12 @@
 import axios from 'axios'
 
+export const startStudentSetErrors = (errors) => {
+    return {
+        type: 'SET_ERRORS',
+        payload: errors
+    }
+}
+
 export const startAddStudent = (formData) =>{
     console.log('formdata for reg stu',formData)
     return (dispatch)=>{

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { startGetAdminCourses, startRemoveCourses } from "../../actions/adminCoursesActions";
+import { startGetAdminCourses, startRemoveCourses } from "../../actions/adminCoursesAction";
 
 const AdminCoursesList = props => {
     const dispatch=useDispatch()
@@ -20,8 +20,8 @@ const AdminCoursesList = props => {
             {
                 // adminCourses.length>0 && (
                     <div>
-                        <table className='table'>
-                        <thead style={{color:'#2d96c0'}}>
+                        <table className='table table-striped'>
+                        <thead style={{color:'#2d96c0'}} >
                             <tr>
                                 <th>No.</th>
                                 <th>Course Name</th>
@@ -49,7 +49,6 @@ const AdminCoursesList = props => {
                                     </tr>
                                 })}
                         </tbody>
-                            
                         </table>
                     </div>
                 // )

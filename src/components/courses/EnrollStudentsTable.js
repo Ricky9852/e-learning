@@ -8,6 +8,12 @@ const EnrollStudentsTable = props =>{
     const students = useSelector((state)=>{
         return state.students.data
     })
+    const enrolledStudents = id => {
+        const result = students.find((student)=> {
+            return id === student._id
+        })
+        return result.name
+    }
     useEffect(()=>{
         dispatch(startGetStudents())
     },[])
@@ -17,8 +23,8 @@ const EnrollStudentsTable = props =>{
             {
                 students.length>0 && (
                     <div>
-                        <table className='table'>
-                            <thead>
+                        <table className='table table-striped'>
+                            <thead className="thead-dark">
                                 <tr>
                                     <th>No.</th>
                                     <th>Name</th>
@@ -32,7 +38,7 @@ const EnrollStudentsTable = props =>{
                                                 <td>{i+1}</td>
                                                 <td>{student.name}</td>
                                                 <td>{student.email}</td>
-                                                <td><button onClick={()=>{handleEnroll(student._id)}}>Enroll</button><button onClick={()=>{handleUnEnroll(student._id)}}>Un-Enroll</button></td>
+                                                <td><button className="btn btn-outline-success" onClick={()=>{handleEnroll(student._id)}}>Enroll</button><button className="btn btn-outline-danger" onClick={()=>{handleUnEnroll(student._id)}}>Un-Enroll</button></td>
                                             </tr>
                                 })}
                             </tbody>

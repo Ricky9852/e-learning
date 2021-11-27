@@ -22,7 +22,7 @@ const StudentsList = props =>{
             {
                 students.length>0 && (
                     <div>
-                        <table className='table'>
+                        <table className='table table-striped'>
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -42,8 +42,8 @@ const StudentsList = props =>{
                                                 <td>{student.email}</td>
                                                 {/* <td>{student.password}</td> */}
                                                 <td>{student.role}</td>
-                                                <td><Link to={`/students/list/${student._id}`}>Details</Link></td>
-                                                <td><button onClick={()=>{handleRemove(student._id)}}>Delete</button></td>
+                                                <td><Link to={`/students/list/${student._id}`}><button className="btn btn-info">Details</button></Link></td>
+                                                <td><button className="btn btn-danger" onClick={()=>{handleRemove(student._id)}}>Delete</button></td>
                                             </tr>
                                 })}
                             </tbody>

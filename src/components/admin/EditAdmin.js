@@ -4,12 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { startEditAdmin, startSetErrors } from "../../actions/adminAction";
 
 const EditAdmin = props => {
-    const {handleToggle}=props
+    const { handleToggle }=props
 
     const admin = useSelector((state) => {
         return state.admin.data
     })
 
+    const adminErrors = useSelector((state) => {
+        return state.admin.errors
+    })
+
+    const handleCancel = () => {
+        handleToggle()
+    }
     const [username, setUsername] = useState(admin.username ? admin.username : '')
     const [email, setEmail] = useState(admin.email ? admin.email : '')
     const [academy, setAcademy] = useState({name: admin.academy.name ? admin.academy.name : '', website: admin.academy.website ? admin.academy.website : ''})
@@ -69,26 +76,34 @@ const EditAdmin = props => {
 
     return (
         <div>
-            <h1>Edit Account</h1>
-            <form onSubmit = {handleSubmit} className = 'g-col-4'>
-                <div className = 'mb-3' >
-                    <input type = "text" value = {username} placeholder = 'enter your username' name = 'username' onChange = {handleChange} /> 
-                </div>
+            <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+                <div className="card-body" >
+                    <h1>Edit Account</h1>
+                        <form className = 'g-col-4'>
+                            <div className = 'mb-3' >
+                                <input type = "text" value = {username} placeholder = 'enter your username*' name = 'username' onChange = {handleChange} /><br/>
+                                { adminErrors.username && <span style={{color:'red'}}>{adminErrors.username}</span> } 
+                            </div>
 
-                <div className = 'mb-3' >
-                    <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
-                </div>
+                            <div className = 'mb-3' >
+                                <input type = "text" value = {email} placeholder = 'enter your email*' name = 'email' onChange = {handleChange} /> <br/>
+                                { adminErrors.email && <span style={{color:'red'}}>{adminErrors.email}</span> } 
+                            </div>
 
-                <div className = 'mb-3' >
-                    <input type = "text" value = {academy.name} placeholder = 'enter the academy name' name = 'academyName' onChange = {handleChange} /> 
-                </div>
+                            <div className = 'mb-3' >
+                                <input type = "text" value = {academy.name} placeholder = 'enter the academy name*' name = 'academyName' onChange = {handleChange} /> <br/>
+                                { adminErrors.academy.name && <span style={{color:'red'}}>{adminErrors.academy}</span> } 
+                            </div>
 
-                <div className = 'mb-3' >
-                    <input type = "text" value = {academy.website} placeholder = 'enter the academy website' name = 'academyWebsite' onChange = {handleChange} /> 
-                </div>
+                            <div className = 'mb-3' >
+                                <input type = "text" value = {academy.website} placeholder = 'enter the academy website' name = 'academyWebsite' onChange = {handleChange} />  <br/>
+                            </div>
 
-                <input type = "submit" value = "Save" />
-            </form>
+                            <button className="btn btn-outline-success" onClick={handleSubmit}>Save</button>
+                            <button onClick={handleCancel} className="btn btn-outline-danger">Cancel</button>
+                        </form>
+                </div>
+            </div>
         </div>
     )
 }

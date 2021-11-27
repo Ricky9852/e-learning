@@ -4,19 +4,15 @@ const coursesInitialState = {
     errors: {}
 }
 
-export const adminCoursesReducer = ( state = coursesInitialState, action) => {
+export const studentCoursesReducer = ( state = coursesInitialState, action) => {
     switch(action.type){
         // case 'SET_ERRORS': {
         //     return {...state, errors: {...action.payload}}
         // }
-        case 'ADD_COURSES': {
-            return {...state}
-        }
-        case 'GET_ADMINCOURSES': {
+        case 'GET_STUDENTCOURSES': {
             return {...state, data: [...action.payload]}
         }
-        case 'EDIT_COURSES': {
-            console.log('unedited state',state)
+        case 'ENROLL_STUDENTCOURSES': {
             const result = state.data.map((course) => {
                 if(course._id === action.payload._id){
                     return {...course, ...action.payload}
@@ -24,17 +20,10 @@ export const adminCoursesReducer = ( state = coursesInitialState, action) => {
                     return {...course}
                 }
             })
-            console.log('edited courses',result)
+            console.log(result)
             return {...state, data: [...result]}
         }
-        case 'REMOVE_COURSES': {
-            const result = state.data.filter((course) => {
-                return course._id !== action.payload._id
-            })
-            console.log('filtered removed res',result)
-            return {...state, data: [...result]}
-        }
-        case 'ENROLL_ADMINCOURSES': {
+        case 'UNENROLL_STUDENTCOURSES': {
             const result = state.data.map((course) => {
                 if(course._id === action.payload._id){
                     return {...course, ...action.payload}

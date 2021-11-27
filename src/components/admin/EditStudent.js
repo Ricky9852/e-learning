@@ -72,25 +72,29 @@ const EditStudent = props => {
 
     return (
         <div>
-            <h3>Edit Student:{student.name}</h3>
-            <form onSubmit = {handleSubmit} className = 'g-col-4'>
-                <div className = 'mb-3' >
-                    <input type = "text" value = {name} placeholder = 'enter student name' name = 'name' onChange = {handleChange} /> 
-                </div>
+            <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+                <div className="card-body" >
+                <h3>Edit Student:{student.name}</h3>
+                    <form className = 'g-col-4'>
+                        <div className = 'mb-3' >
+                            <input type = "text" value = {name} placeholder = 'enter student name' name = 'name' onChange = {handleChange} /> 
+                        </div>
 
-                <div className = 'mb-3' >
-                    <input type = "text" value = {email} placeholder = 'enter student email' name = 'email' onChange = {handleChange} /> 
-                </div>
+                        <div className = 'mb-3' >
+                            <input type = "text" value = {email} placeholder = 'enter student email' name = 'email' onChange = {handleChange} /> 
+                        </div>
 
-                <div className = 'mb-3' >
-                    <label>Allowed : </label>
-                    <input type="radio" value="true" name="isAllowed" checked={isAllowed==true} onChange={handleChange} />  Yes
-                    <input type="radio" value="false" name="isAllowed" checked={isAllowed==false} onChange={handleChange} />  No
-                </div>
+                        <div className = 'mb-3' >
+                            <label>Allowed : </label>
+                            <input type="radio" value="true" name="isAllowed" checked={isAllowed==true} onChange={handleChange} />  Yes
+                            <input type="radio" value="false" name="isAllowed" checked={isAllowed==false} onChange={handleChange} />  No
+                        </div>
 
-                <input type = "submit" value = "Save" />
-                <button onClick={handleCancel}>Cancel</button>
-            </form>
+                        <button className="btn btn-outline-success" onClick={handleSubmit}>Save</button>
+                        <button onClick={handleCancel} className="btn btn-outline-danger">Cancel</button>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }

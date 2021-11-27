@@ -1,5 +1,12 @@
 import axios from 'axios'
 
+export const startCoursesSetErrors = (errors) => {
+    return {
+        type: 'SET_ERRORS',
+        payload: errors
+    }
+}
+
 export const startAddCourses = (formData) =>{
     console.log('formdata for reg stu',formData)
     return (dispatch)=>{
@@ -141,6 +148,38 @@ export const startEnrollAdminCourses = (id,_id) => {
 export const enrollAdminCourses = (result) => {
     return {
         type: 'ENROLL_ADMINCOURSES',
+        payload: result
+    }
+}
+
+export const startUnEnrollAdminCourses = (id,_id) => {
+    return (dispatch) => {
+        axios.patch(`https://dct-e-learning.herokuapp.com/api/courses/unenroll?courseId=${id}&studentId=${_id}`, {} , {
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                }
+            }
+        )
+                .then((response) => {
+                    const result = response.data
+                    if(result.hasOwnProperty('errors')) {
+                        alert(result.message)
+                    } else {
+                        alert('successfully unenrolled the course')
+                        console.log('enrolled res',result)
+                        dispatch(unEnrollAdminCourses(result))
+                        // handleEdit()
+                    }
+                })
+                .catch((err)=>{
+                    alert(err.message)
+                })
+    }
+}
+
+export const unEnrollAdminCourses = (result) => {
+    return {
+        type: 'UNENROLL_ADMINCOURSES',
         payload: result
     }
 }

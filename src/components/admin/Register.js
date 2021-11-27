@@ -14,6 +14,9 @@ const Register = props => {
     // })
     const dispatch = useDispatch()
 
+    const adminErrors = useSelector((state) => {
+        return state.admin.errors
+    })
     const errors = {}
 
     const runValidations = () => {
@@ -57,11 +60,11 @@ const Register = props => {
             dispatch(startAddAdmin(formData, redirect))
         }else{
             dispatch(startSetErrors(errors))
-            alert(`There are following errors :
-            ${Boolean(errors['username']) ? errors['username'] : ''}
-            ${Boolean(errors['email']) ? errors['email'] : ''}
-            ${Boolean(errors['password']) ? errors['password'] : ''}
-            ${Boolean(errors['academy']) ? errors['academy'] : ''}`)
+            // alert(`There are following errors :
+            // ${Boolean(errors['username']) ? errors['username'] : ''}
+            // ${Boolean(errors['email']) ? errors['email'] : ''}
+            // ${Boolean(errors['password']) ? errors['password'] : ''}
+            // ${Boolean(errors['academy']) ? errors['academy'] : ''}`)
         }
         
     }
@@ -82,38 +85,40 @@ const Register = props => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-4">
-            </div>
-                <div className="col-md-4 card bg-light" style={{textAlign:'center', width:"400px"}}>
+        <div >
+                <div className="col-md-4 card bg-light" style={{textAlign:'center', left:"480px", width:"400px"}}>
                 <div className="card-body" >
                 <h1>Register</h1>
-                <form onSubmit = {handleSubmit} className = 'g-col-4'>
+                <form className = 'g-col-4'>
                     <div className = 'mb-3' >
-                        <input type = "text" value = {username} placeholder = 'enter your username' name = 'username' onChange = {handleChange} /> 
+                        <input type = "text" value = {username} placeholder = 'enter your username*' name = 'username' onChange = {handleChange} />  <br/>
+                        { adminErrors.username && <span style={{color:'red'}}>{adminErrors.username}</span> } 
                     </div>
 
                     <div className = 'mb-3' >
-                        <input type = "text" value = {email} placeholder = 'enter your email' name = 'email' onChange = {handleChange} /> 
+                        <input type = "text" value = {email} placeholder = 'enter your email*' name = 'email' onChange = {handleChange} /> <br/>
+                        { adminErrors.email && <span style={{color:'red'}}>{adminErrors.email}</span> } 
                     </div>
 
                     <div className = 'mb-3' >
-                        <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password"/>
+                        <input type = "password" value = {password} name = 'password' onChange = {handleChange} placeholder = "enter your password*"/><br/>
+                        { adminErrors.password && <span style={{color:'red'}}>{adminErrors.password}</span> } 
                     </div>
 
                     <div className = 'mb-3' >
-                        <input type = "text" value = {academy.name} placeholder = 'enter the academy name' name = 'academyName' onChange = {handleChange} /> 
+                        <input type = "text" value = {academy.name} placeholder = 'enter the academy name*' name = 'academyName' onChange = {handleChange} /> <br/>
+                        { adminErrors.academy && <span style={{color:'red'}}>{adminErrors.academy}</span> } 
                     </div>
 
                     <div className = 'mb-3' >
-                        <input type = "text" value = {academy.website} placeholder = 'enter the academy website' name = 'academyWebsite' onChange = {handleChange} /> 
+                        <input type = "text" value = {academy.website} placeholder = 'enter the academy website' name = 'academyWebsite' onChange = {handleChange} /> <br/>
+                        {/* { adminErrors.academy.website && <span style={{color:'red'}}>{adminErrors.academy.website}</span> }  */}
                     </div>
 
-                    <input type = "submit" value = "Register" className="btn btn-secondary"/>
+                    <button className="btn btn-outline-success" onClick={handleSubmit}>Register</button>
                 </form>
                 </div>
             </div>
-            <div className="col-md-4"></div>
         </div>
         
     )

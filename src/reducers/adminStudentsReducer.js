@@ -6,9 +6,9 @@ const studentsInitialState = {
 
 export const adminStudentReducer = ( state = studentsInitialState, action) => {
     switch(action.type){
-        // case 'SET_ERRORS': {
-        //     return {...state, errors: {...action.payload}}
-        // }
+        case 'SET_ERRORS': {
+            return {...state, errors: {...action.payload}}
+        }
         case 'ADD_STUDENT': {
             return {...state}
         }

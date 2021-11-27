@@ -9,9 +9,9 @@ export const studentReducer = ( state = studentInitialState, action) => {
         // case 'SET_ERRORS': {
         //     return {...state, errors: {...action.payload}}
         // }
-        case 'GET_STUDENT': {
-            return {...state, data: {...action.payload}}
-        }
+        // case 'GET_STUDENT': {
+        //     return {...state, data: {...action.payload}}
+        // }
         default: {
             return {...state}
         }

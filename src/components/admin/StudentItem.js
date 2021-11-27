@@ -2,19 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import EditStudent from "./EditStudent";
+import { startGetAdminCourses } from "../../actions/adminCoursesAction";
 
 const StudentItem = props =>{
     const {id} = props.match.params
+    const dispatch = useDispatch()
     const [toggle,setToggle] = useState(true)
     const [student,setStudent] = useState({})
     const handleEdit=()=>{
         setToggle(!toggle)
     }
     console.log('studentitem',student);
-    const students = useSelector((state)=>{
-        return state.students.data
+    const courses = useSelector((state)=>{
+        return state.adminCourses.data
     })
+    const enrolledCourses = id => {
+        const result = courses.find((course)=> {
+            return id === course._id
+        })
+        return result.name
+    }
     useEffect(()=>{
+        dispatch(startGetAdminCourses())
         axios.get(`https://dct-e-learning.herokuapp.com/api/students/${id}`, {
             headers: {
                 'Authorization': localStorage.getItem('token')
@@ -41,26 +50,30 @@ const StudentItem = props =>{
             {/* <button onClick={props.history.push('/students')}>Back</button> */}
             <div style={{textAlign:'center'}}>
                 <h2>Student Details</h2>
-                <button onClick={handleEdit}>Edit</button>
+                <button onClick={handleEdit} className="btn btn-outline-primary">Edit</button>
                 {toggle ? (
                     <div>
                         {Object.keys(student).length>0 && (
                             <div>
-                                <p>Name:{student.name}</p>
-                                <p>Email:{student.email}</p>
-                                {/* <p>Password:{student.password}</p> */}
-                                <p>Allowed:{String(student.isAllowed)}</p>
-                                <p>Role:{student.role}</p>
-                                <div>Courses:
-                                    <ul>
-                                        {student.courses.map((ele,i)=>{
-                                            return <li key={i}>{ele.course}</li>
-                                        })}
-                                    </ul>
+                                <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+                                    <div className="card-body" >
+                                        <p>Name:{student.name}</p>
+                                        <p>Email:{student.email}</p>
+                                        {/* <p>Password:{student.password}</p> */}
+                                        <p>Allowed:{String(student.isAllowed)}</p>
+                                        <p>Role:{student.role}</p>
+                                        <div>Enrolled Courses:
+                                            <ol>
+                                                {student.courses.map((ele,i)=>{
+                                                    return <li key={i}>{enrolledCourses(ele.course)}</li>
+                                                })}
+                                            </ol>
+                                        </div>
+                                        {/* <p>User:{student.user}</p> */}
+                                        {/* <p>Created At:{student.createdAt}</p> */}
+                                        {/* <p>Updated At:{student.updatedAt}</p> */}
+                                    </div>
                                 </div>
-                                {/* <p>User:{student.user}</p> */}
-                                {/* <p>Created At:{student.createdAt}</p> */}
-                                {/* <p>Updated At:{student.updatedAt}</p> */}
                             </div>
                         )}
                     </div>

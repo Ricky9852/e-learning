@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { startEditAdminCourses } from "../../actions/adminCoursesActions";
+import { startEditAdminCourses } from "../../actions/adminCoursesAction";
 import CoursesForm from "./CoursesForm";
 
 const EditCourse = props =>{
@@ -10,8 +10,15 @@ const EditCourse = props =>{
         dispatch(startEditAdminCourses(formData,_id))
         handleEdit()
     }
+    const handleCancel = () => {
+        handleEdit()
+    }
     return (
-        <CoursesForm handleSubmit={handleSubmit} {...course} id={id}/>
+        <div>
+            <button onClick={handleCancel} className="btn btn-outline-danger">Cancel</button>
+            <CoursesForm handleSubmit={handleSubmit} {...course} id={id}/>
+        </div>
+        
     )
 }
 
