@@ -28,7 +28,7 @@ const StudentsList = props =>{
                                     <th>No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    {/* <th>Password</th> */}
+                                    <th>Allow</th>
                                     <th>Role</th>
                                     <th>Details</th>
                                     <th>Action</th>
@@ -40,7 +40,7 @@ const StudentsList = props =>{
                                                 <td>{i+1}</td>
                                                 <td>{student.name}</td>
                                                 <td>{student.email}</td>
-                                                {/* <td>{student.password}</td> */}
+                                                <td>{student.isAllowed ? <span>👍</span> : <span>👎</span> }</td>
                                                 <td>{student.role}</td>
                                                 <td><Link to={`/students/list/${student._id}`}><button className="btn btn-info">Details</button></Link></td>
                                                 <td><button className="btn btn-danger" onClick={()=>{handleRemove(student._id)}}>Delete</button></td>

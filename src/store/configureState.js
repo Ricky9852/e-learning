@@ -1,6 +1,7 @@
 import { createStore,combineReducers,applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { adminCoursesReducer } from '../reducers/adminCoursesReducer'
+import { adminLecturesReducer } from '../reducers/adminLecturesReducer'
 import  { adminReducer, loggedReducer } from '../reducers/adminReducer'
 import { adminStudentReducer } from '../reducers/adminStudentsReducer'
 import { studentCoursesReducer } from '../reducers/studentCoursesReducer'
@@ -14,7 +15,8 @@ const configureState = () => {
         student: studentReducer,
         studentIsLoggedIn: studentLoggedReducer,
         adminCourses: adminCoursesReducer,
-        studentCourses: studentCoursesReducer
+        studentCourses: studentCoursesReducer,
+        adminLectures: adminLecturesReducer
     }), applyMiddleware(thunk))
     return store
 }

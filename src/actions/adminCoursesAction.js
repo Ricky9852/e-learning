@@ -8,7 +8,7 @@ export const startCoursesSetErrors = (errors) => {
 }
 
 export const startAddCourses = (formData) =>{
-    console.log('formdata for reg stu',formData)
+    console.log('formdata foradd cour',formData)
     return (dispatch)=>{
         axios.post('https://dct-e-learning.herokuapp.com/api/courses', formData, {
             headers: {
@@ -21,7 +21,7 @@ export const startAddCourses = (formData) =>{
                         alert(result.message)
                     } else {
                         alert('successfully added a course')
-                        console.log('student reg response',result)
+                        console.log('course response',result)
                         dispatch(addCourses())
                     }
                 })

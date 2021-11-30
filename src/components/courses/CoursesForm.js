@@ -96,12 +96,14 @@ const CoursesForm = props => {
             setLevel(e.target.value)
         }else if(attr === 'author'){
             setAuthor(e.target.value)
+        }else if(attr === 'isDelete'){
+            setIsDelete(e.target.value)
         }
     }
 
     return (
         <div style={{textAlign:'center'}}>
-            <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+            <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                 <div className="card-body" >
                     <form className = 'g-col-4'>
                     <div className = 'mb-3' >

@@ -86,7 +86,7 @@ const Register = props => {
 
     return (
         <div >
-                <div className="col-md-4 card bg-light" style={{textAlign:'center', left:"480px", width:"400px"}}>
+                <div className="col-md-4 card bg-light" style={{textAlign:'center', left:"475px", width:"400px"}}>
                 <div className="card-body" >
                 <h1>Register</h1>
                 <form className = 'g-col-4'>

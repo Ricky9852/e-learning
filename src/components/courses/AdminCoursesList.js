@@ -21,7 +21,7 @@ const AdminCoursesList = props => {
                 // adminCourses.length>0 && (
                     <div>
                         <table className='table table-striped'>
-                        <thead style={{color:'#2d96c0'}} >
+                        <thead >
                             <tr>
                                 <th>No.</th>
                                 <th>Course Name</th>
@@ -31,6 +31,7 @@ const AdminCoursesList = props => {
                                 {/* <th>Course Release Date</th> */}
                                 <th>Level</th>
                                 <th>Details</th>
+                                <th>Lectures</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -45,6 +46,7 @@ const AdminCoursesList = props => {
                                         {/* <td>{course.releaseDate}</td> */}
                                         <td>{course.level}</td>
                                         <td><Link to={`/courses/admin-course-list/${course._id}`}><button className="btn btn-info">Details</button></Link></td>
+                                        <td><Link to={`/courses/admin-course-list/${course._id}/lectures`}><button className="btn btn-info">Lectures</button></Link></td>
                                         <td><button className="btn btn-danger" onClick={()=>{handleRemove(course._id)}}>Remove</button></td>
                                     </tr>
                                 })}

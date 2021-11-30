@@ -8,7 +8,7 @@ import EditCourse from "./EditCourse";
 import EnrollStudentsTable from "./EnrollStudentsTable";
 
 const AdminCourseItem = props =>{
-    const {id} = props.match.params
+    const {cid: id} = props.match.params
     const dispatch = useDispatch()
     const [toggle,setToggle] = useState(true)
     const [course,setCourse] = useState({})
@@ -29,7 +29,7 @@ const AdminCourseItem = props =>{
         const result = students.find((student)=> {
             return id === student._id
         })
-        return result.name
+        return result != undefined ? result.name : ''
     }
     
     // const courses = useSelector((state)=>{
@@ -68,7 +68,7 @@ const AdminCourseItem = props =>{
                     <div>
                         {Object.keys(course).length>0 && (
                             <div>
-                                <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+                                <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                                     <div className="card-body" >
                                         <p>Course Name:{course.name}</p>
                                         <p>Course Description:{course.description}</p>

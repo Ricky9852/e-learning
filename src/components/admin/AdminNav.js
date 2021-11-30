@@ -9,8 +9,8 @@ const AdminNav = props =>{
         <div>
             <h1>Students</h1>
             {/* <Link to='/'>Students</Link> */} 
-            <Link to='/students/list'><button className='btn btn-primary'>Students' List</button></Link>
-            <Link to='/students/register'><button className='btn btn-primary'>Register New Student</button></Link>
+            <Link to='/students/list'><button className='btn btn-outline-secondary'>Students' List</button></Link>
+            <Link to='/students/register'><button className='btn btn-outline-secondary'>Register New Student</button></Link>
             {/* <Route path='/' exact component={StudentCRUD} /> */}
             <Route path='/students/register' exact component={StudentsRegister} />
             <Route path='/students/list' exact component={StudentsList} />

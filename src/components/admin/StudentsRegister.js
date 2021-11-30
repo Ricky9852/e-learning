@@ -75,7 +75,7 @@ const StudentsRegister = props => {
 
     return (
         <div style={{textAlign:'center'}}>
-            <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+            <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                 <div className="card-body" >
                 <h1>Register Student</h1>
                 <form onSubmit = {handleSubmit} className = 'g-col-4'>

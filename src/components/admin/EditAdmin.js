@@ -76,7 +76,7 @@ const EditAdmin = props => {
 
     return (
         <div>
-            <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+            <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                 <div className="card-body" >
                     <h1>Edit Account</h1>
                         <form className = 'g-col-4'>

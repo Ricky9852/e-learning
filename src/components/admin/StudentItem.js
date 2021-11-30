@@ -7,8 +7,9 @@ import { startGetAdminCourses } from "../../actions/adminCoursesAction";
 const StudentItem = props =>{
     const {id} = props.match.params
     const dispatch = useDispatch()
-    const [toggle,setToggle] = useState(true)
-    const [student,setStudent] = useState({})
+    const [toggle, setToggle] = useState(true)
+    const [student, setStudent] = useState({})
+    // const [enrolledCourses, setEnrolledCourses] = useState([])
     const handleEdit=()=>{
         setToggle(!toggle)
     }
@@ -20,7 +21,8 @@ const StudentItem = props =>{
         const result = courses.find((course)=> {
             return id === course._id
         })
-        return result.name
+        console.log('enrolled courses',result);
+        return result != undefined ? result.name : ''
     }
     useEffect(()=>{
         dispatch(startGetAdminCourses())
@@ -55,7 +57,7 @@ const StudentItem = props =>{
                     <div>
                         {Object.keys(student).length>0 && (
                             <div>
-                                <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+                                <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                                     <div className="card-body" >
                                         <p>Name:{student.name}</p>
                                         <p>Email:{student.email}</p>

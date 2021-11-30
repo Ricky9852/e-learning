@@ -72,7 +72,7 @@ const EditStudent = props => {
 
     return (
         <div>
-            <div className=" card bg-light" style={{textAlign:'center', left:"480px",width:"400px"}}>
+            <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                 <div className="card-body" >
                 <h3>Edit Student:{student.name}</h3>
                     <form className = 'g-col-4'>
