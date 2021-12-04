@@ -62,7 +62,7 @@ const StudentItem = props =>{
                 <button onClick={handleEdit} className="btn btn-outline-primary">Edit</button>
                 {toggle ? (
                     <div>
-                        {Object.keys(student).length>0 && (
+                        {Object.keys(student).length !== 0 ? (
                             <div>
                                 <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                                     <div className="card-body" >
@@ -84,7 +84,10 @@ const StudentItem = props =>{
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        ) : (
+                            <p>Loading...</p>
+                        )
+                    }
                     </div>
                 ):(
                     <div>

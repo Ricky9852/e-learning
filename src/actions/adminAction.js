@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 export const startSetErrors = (errors) => {
     return {
@@ -14,16 +15,31 @@ export const startAddAdmin = (formData, redirect) => {
                 .then( (response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully created an account')
+                        Swal.fire(
+                            'Good job!',
+                            'Successfully created an account',
+                            'success'
+                          )
+                        // alert('successfully created an account')
                         console.log(response)
                         dispatch(addAdmin())//i dont think this is compulsory
                         redirect()
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -40,9 +56,19 @@ export const startLogAdmin = (formData, redirect) => {
                 .then((response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.errors)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     }else{
-                        alert('successfully logged in')
+                        Swal.fire(
+                            'Good job!',
+                            'Successfully Logged in',
+                            'success'
+                          )
+                        // alert('successfully logged in')
                         // console.log('login data',result)
                         localStorage.setItem('token', result.token)
                         dispatch(adminLogged())
@@ -50,7 +76,12 @@ export const startLogAdmin = (formData, redirect) => {
                     }
                 })
                 .catch((err) => {
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -74,7 +105,12 @@ export const startGetAdmin = () => {
                 dispatch(getAdmin(result))
             })
             .catch((err) => {
-                alert(err.message)
+                // alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
             })
     }
 }
@@ -97,7 +133,12 @@ export const startEditAdmin = (formData, handleToggle) => {
                 .then( (response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
                         alert('successfully edited an account')
                         console.log('edited res',result)
@@ -106,7 +147,12 @@ export const startEditAdmin = (formData, handleToggle) => {
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }

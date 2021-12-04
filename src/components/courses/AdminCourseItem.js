@@ -34,6 +34,9 @@ const AdminCourseItem = props =>{
     const students = useSelector((state)=>{
         return state.students.data
     })
+    const adminCourses = useSelector((state)=>{
+        return state.adminCourses.data
+    })
     const enrolledStudents = sid => {
         const result = students.find((student)=> {
             return sid === student._id
@@ -53,7 +56,7 @@ const AdminCourseItem = props =>{
         // if(Object.keys(course).length===0){
             dispatch(startGetSingleAdminCourse(id, handleSetCourse))
         // }
-    },[toggle])
+    },[adminCourses])
     // console.log(localStorage.getItem('student'));
     return (
         <div>
@@ -66,7 +69,7 @@ const AdminCourseItem = props =>{
                     <button onClick={handleEdit} className="btn btn-outline-primary">Edit</button><button className="btn btn-outline-primary" onClick={handleEnrollToggle}>Enroll/Unenroll</button>
                     {toggle ? (
                         <div>
-                            {Object.keys(course).length>0 && (
+                            {Object.keys(course).length !== 0 ? (
                                 <div>
                                     <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                                         <div className="card-body" >
@@ -91,6 +94,8 @@ const AdminCourseItem = props =>{
                                         </div>
                                     </div>
                                 </div>
+                            ) : (
+                                <p>Loading...</p>
                             )}
                         </div>
                     ):(

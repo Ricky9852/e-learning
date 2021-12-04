@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const startLecturesSetErrors = (errors) => {
     return {
@@ -18,16 +19,31 @@ export const startAddLecture = (formData, cid, redirect) =>{
                 .then((response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully added a lecture')
+                        // alert('successfully added a lecture')
+                        Swal.fire(
+                            'Good job!',
+                            'New Lecture Added Successfully',
+                            'success'
+                          )
                         console.log('lec add response',result)
                         dispatch(addLecture())
                         redirect()
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -50,7 +66,12 @@ export const startGetAdminLectures = (cid) => {
                 dispatch(getAdminLectures(result))
             })
             .catch((err) => {
-                alert(err.message)
+                // alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
             })
     }
 }
@@ -72,16 +93,31 @@ export const startRemoveLectures = (cid, _id) => {
                 .then((response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully removed the lecture')
+                        // alert('successfully removed the lecture')
+                        Swal.fire(
+                            'Good job!',
+                            'Lecture Removed Successfully',
+                            'success'
+                          )
                         console.log('removed res',result)
                         dispatch(removeLectures(result))
                         // handleEdit()
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -108,10 +144,19 @@ export const startEditAdminLectures = (formData, cid, lid) => {
                 console.log('edited lecture result',result)
                 // dispatch(startGetAdminLectures(cid))
                 dispatch(editAdminLectures(result))
-                alert('lecture updated successfully')
+                Swal.fire(
+                    'Good job!',
+                    'Lecture Updated Successfully',
+                    'success'
+                  )
+                // alert('lecture updated successfully')
             })
             .catch((err) => {
-                alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
             })
     }
 }
@@ -136,7 +181,12 @@ export const startGetSingleAdminLecture = (cid, lid, handleSetLecture) => {
                 console.log('lectureitem',lectureData)
             })
             .catch((err) => {
-                alert(err.message)
+                // alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
             })
     }
 }

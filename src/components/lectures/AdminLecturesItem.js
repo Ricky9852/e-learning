@@ -19,7 +19,7 @@ const AdminLecturesItem = props => {
         setToggle(!toggle)
     }
     const handleBack = () => {
-        props.history.push(`/courses/admin-course-list/${cid}/lectures`)
+        props.history.push(`/courses/admin-course-list/cid=${cid}/lectures`)
     }
     const handleSetLecture = (lectureData) => {
         setLecture(lectureData)
@@ -45,12 +45,12 @@ const AdminLecturesItem = props => {
     },[toggle])
 
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             <h2>Lecture Details</h2>
                 <button onClick={handleEdit} className="btn btn-outline-primary">Edit</button>
                 {toggle ? (
                     <div>
-                        {Object.keys(lecture).length>0 && (
+                        {Object.keys(lecture).length !==0 ? (
                             <div>
                                 <div className="card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                                     <div className="card-body" >
@@ -81,6 +81,8 @@ const AdminLecturesItem = props => {
                                             </div>
                                 }
                             </div>
+                        ) : (
+                            <p>Loading...</p>
                         )}
                     </div>
                 ):(

@@ -1,4 +1,5 @@
 import axios from "axios"
+import Swal from 'sweetalert2'
 
 export const startGetStudentCourses = () => {
     return (dispatch) => {
@@ -13,7 +14,12 @@ export const startGetStudentCourses = () => {
                 dispatch(getStudentCourses(result))
             })
             .catch((err) => {
-                alert(err.message)
+                // alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
             })
     }
 }
@@ -36,16 +42,31 @@ export const startEnrollStudentCourses = (_id) => {
                 .then((response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully enrolled the course')
+                        // alert('successfully enrolled the course')
+                        Swal.fire(
+                            'Good job!',
+                            'Enrolled to the Course Successfully',
+                            'success'
+                          )
                         console.log('enrolled res',result)
                         dispatch(enrollStudentCourses(result))
                         // handleEdit()
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -68,16 +89,31 @@ export const startUnEnrollStudentCourses = (id,_id) => {
                 .then((response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully unenrolled the course')
+                        // alert('successfully unenrolled the course')
+                        Swal.fire(
+                            'Good job!',
+                            'Unenrolled to the Successfully',
+                            'success'
+                          )
                         console.log('enrolled res',result)
                         dispatch(unEnrollStudentCourses(result))
                         // handleEdit()
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }

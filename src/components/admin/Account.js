@@ -22,8 +22,9 @@ const Account = props => {
     }
     return (
         <div style={{textAlign:'center'}}>
-            {Object.keys(admin).length>0 &&
-            <div>
+            {Object.keys(admin).length !==0 ?
+            (
+                <div>
                 <h1>User Account</h1>
                 <button className="btn btn-outline-primary" onClick={handleToggle}>Edit</button>
                 {toggle ? (
@@ -44,15 +45,10 @@ const Account = props => {
                         </div>
                     </div>
                 )}
-                {/* <div className = "card text-white bg-dark mb-3">
-                    <div className = "card-header" >Email - {admin.email}</div>
-                    <div className = "card-body">
-                        <p className = "card-text" >Username - {admin.username}</p>
-                    </div>
-                </div> */}
-                
-                {/* <p>academy name-{Object.keys(admin.academy).length>0 && (<p>{admin.academy.name}</p>)}</p> */}
-            </div>
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )
             }
             
         </div>

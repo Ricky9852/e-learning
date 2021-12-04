@@ -18,6 +18,8 @@ import StudentsList from "./admin/StudentsList";
 import StudentItem from "./admin/StudentItem";
 import PrivateRoute from "./PrivateRoute"
 import NotFound from "./NotFound";
+import Swal from 'sweetalert2'
+import StudentAccount from "./student/StudentAccount";
 
 const NavBar = ( props ) => {
     const isLoggedIn = useSelector((state) => {
@@ -60,7 +62,12 @@ const NavBar = ( props ) => {
                                         localStorage.removeItem('token')
                                         props.history.push('/')
                                         dispatch(adminLogged())
-                                        alert('successfullly logged out')
+                                        // alert('successfullly logged out')
+                                        Swal.fire(
+                                            'Good job!',
+                                            'Logged in Successfully',
+                                            'success'
+                                          )
                                     }}>Logout</Link>
                                 </li>
                             </>
@@ -68,7 +75,10 @@ const NavBar = ( props ) => {
                             <>
                                 {
                                     studentIsLoggedIn ? (
-                                        <>  
+                                        <>
+                                            <li className="nav-item">
+                                                <Link to='/student-account' className='nav-link'>Account</Link>
+                                            </li>
                                             <li className="nav-item">
                                                 <Link to='/courses' className='nav-link'>Courses</Link>
                                             </li>
@@ -103,6 +113,7 @@ const NavBar = ( props ) => {
                 <Route path='/' component={Home} exact/>
                 <Route path='/register' component={Register} exact/>
                 <Route path='/login' component={Login} exact/>
+                <Route path='/student-account' studentIsLoggedIn={studentIsLoggedIn} component={StudentAccount} exact={true}/>
                 <PrivateRoute path='/students' isLoggedIn={isLoggedIn} component={<StudentsCRUD props={props}/>} />
                 <PrivateRoute path='/account' isLoggedIn={isLoggedIn} component={<Account/>} exact={true}/>
                 <Route path='/courses' isLoggedIn={isLoggedIn} component={Courses} />

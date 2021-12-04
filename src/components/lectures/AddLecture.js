@@ -11,10 +11,10 @@ const AddLecture = props => {
         dispatch(startAddLecture(formData, cid, redirect))
     }
     const handleBack = () => {
-        props.history.push(`/courses/admin-course-list/${cid}/lectures`)
+        props.history.push(`/courses/admin-course-list/cid=${cid}/lectures`)
     }
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             <h1>Add New Lecture</h1>
             <LecturesForm handleSubmit={handleSubmit} cid={cid} {...props}/>
             <button className='btn btn-outline-secondary' onClick={handleBack}>Back</button>

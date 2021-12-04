@@ -40,7 +40,7 @@ const StudentsList = props =>{
                 </span>
             </div>
             {
-                students.length>0 && (
+                students.length !==0 ? (
                     <div>
                         <table className='table table-striped'>
                             <thead>
@@ -48,7 +48,7 @@ const StudentsList = props =>{
                                     <th>No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Allow</th>
+                                    <th>Allowed</th>
                                     <th>Role</th>
                                     <th>Details</th>
                                     <th>Action</th>
@@ -60,7 +60,7 @@ const StudentsList = props =>{
                                                 <td>{i+1}</td>
                                                 <td>{student.name}</td>
                                                 <td>{student.email}</td>
-                                                <td>{student.isAllowed ? <span>👍</span> : <span>👎</span> }</td>
+                                                <td>{student.isAllowed ? <span>Yes</span> : <span>No</span> }</td>
                                                 <td>{student.role}</td>
                                                 <td><Link to={`/students/list/sid=${student._id}`}><button className="btn btn-info">Details</button></Link></td>
                                                 <td><button className="btn btn-danger" onClick={()=>{handleRemove(student._id)}}>Delete</button></td>
@@ -69,6 +69,8 @@ const StudentsList = props =>{
                             </tbody>
                         </table>
                     </div>
+                ) : (
+                    <p>Loading...</p>
                 )
             }
             {/* <Route path='/students/list/:id' component={StudentItem} exact/> */}

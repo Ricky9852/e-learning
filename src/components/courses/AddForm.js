@@ -5,8 +5,12 @@ import CoursesForm from "./CoursesForm";
 
 const AddForm = props =>{
     const dispatch = useDispatch()
+    const handleBack = () => {
+        props.history.push(`/courses/admin-course-list`)
+    }
     const handleSubmit = formData =>{
         dispatch(startAddCourses(formData))
+        handleBack()
     }
     return (
         <div style={{textAlign:'center'}}>

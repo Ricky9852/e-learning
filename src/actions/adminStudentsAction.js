@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const startStudentSetErrors = (errors) => {
     return {
@@ -18,15 +19,30 @@ export const startAddStudent = (formData) =>{
                 .then((response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully added a student')
+                        // alert('successfully added a student')
+                        Swal.fire(
+                            'Good job!',
+                            'New Student Added Successfully',
+                            'success'
+                          )
                         console.log('student reg response',result)
                         dispatch(addStudent())
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -49,7 +65,12 @@ export const startGetStudents = () => {
                 dispatch(getStudents(result))
             })
             .catch((err) => {
-                alert(err.message)
+                // alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
             })
     }
 }
@@ -72,16 +93,31 @@ export const startEditStudent = (id, formData) => {
                 .then( (response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully edited an account')
+                        // alert('successfully edited an account')
+                        Swal.fire(
+                            'Good job!',
+                            'Account Edited Successfully',
+                            'success'
+                          )
                         console.log('edited res',result)
                         dispatch(editStudent(result))
                         // handleEdit()
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -103,16 +139,31 @@ export const startRemoveStudent = (_id) => {
                 .then((response) => {
                     const result = response.data
                     if(result.hasOwnProperty('errors')) {
-                        alert(result.message)
+                        // alert(result.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${result.message}`
+                          })
                     } else {
-                        alert('successfully removed the account')
+                        // alert('successfully removed the account')
+                        Swal.fire(
+                            'Good job!',
+                            'Removed Account Successfully',
+                            'success'
+                          )
                         console.log('removed res',result)
                         dispatch(removeStudent(result))
                         // handleEdit()
                     }
                 })
                 .catch((err)=>{
-                    alert(err.message)
+                    // alert(err.message)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${err.message}`
+                      })
                 })
     }
 }
@@ -137,7 +188,12 @@ export const startGetSingleAdminStudent = (id, handleSetStudent) => {
                 console.log('studentitem',studentData)
             })
             .catch((err) => {
-                alert(err.message)
+                // alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
             })
     }
 }
