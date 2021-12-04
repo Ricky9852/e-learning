@@ -72,7 +72,7 @@ export const startEditAdminCourses = (formData, _id) => {
             .then((response) => {
                 const result = response.data
                 console.log(result)
-                dispatch(startGetAdminCourses())
+                // dispatch(startGetAdminCourses())
                 dispatch(editAdminCourses(result))
                 alert('course updated successfully')
             })
@@ -135,6 +135,7 @@ export const startEnrollAdminCourses = (id,_id) => {
                     } else {
                         alert('successfully enrolled the course')
                         console.log('enrolled res',result)
+                        // dispatch(startGetAdminCourses())
                         dispatch(enrollAdminCourses(result))
                         // handleEdit()
                     }
@@ -167,6 +168,7 @@ export const startUnEnrollAdminCourses = (id,_id) => {
                     } else {
                         alert('successfully unenrolled the course')
                         console.log('enrolled res',result)
+                        // dispatch(startGetAdminCourses())
                         dispatch(unEnrollAdminCourses(result))
                         // handleEdit()
                     }
@@ -181,5 +183,23 @@ export const unEnrollAdminCourses = (result) => {
     return {
         type: 'UNENROLL_ADMINCOURSES',
         payload: result
+    }
+}
+
+export const startGetSingleAdminCourse = (id, handleSetCourse) => {
+    return (dispatch) => {
+        axios.get(`https://dct-e-learning.herokuapp.com/api/courses/${id}`, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+            .then((response) => {
+                const courseData = response.data
+                handleSetCourse(courseData)
+                console.log('courseitem',courseData)
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
     }
 }

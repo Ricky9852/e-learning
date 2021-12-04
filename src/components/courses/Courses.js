@@ -25,21 +25,30 @@ const Courses = ( props ) => {
         dispatch(logStudent())
     }, [])
     return (
-        <div style={{textAlign:'center'}}>
-            <h1>Courses</h1>
-            { isLoggedIn && <div>
-                <Link to = '/courses/admin-course-list'><button className = 'btn btn-outline-secondary'>Course List</button></Link>
-                <Link to = '/courses/addcourse'><button className = 'btn btn-outline-secondary'>Add New Course</button></Link>
-            </div> }
-            { studentIsLoggedIn && <Link to = '/courses/student-course-list'><button className = 'btn btn-primary'>Course List</button></Link> }
+        <div>
+            <div className="row">
+                <div className="col-md-3" >
+                    <h1>Courses</h1>
+                </div>
+                <span className="col-md-6"></span>
+                <div className="col-md-3">
+                    { isLoggedIn && <div>
+                        <Link to = '/courses/admin-course-list'><button className = 'btn btn-outline-primary'>Course List</button></Link>
+                        <Link to = '/courses/addcourse'><button className = 'btn btn-outline-primary'>Add New Course</button></Link>
+                    </div> }
+                    { studentIsLoggedIn && <Link to = '/courses/student-course-list'><button className = 'btn btn-primary'>Course List</button></Link> }
+                </div>
+            </div>
+            
+            
             <Switch>
                 <Route path = '/courses/admin-course-list' exact component = {AdminCoursesList}/>
                 <Route path = '/courses/student-course-list' exact component = {StudentCoursesList}/>
                 <Route path ='/courses/addcourse' component = {AddForm} exact/>
-                <Route path = '/courses/admin-course-list/:cid' exact component = {AdminCourseItem}/>
-                <Route path = {`/courses/admin-course-list/:cid/lectures`} exact component = {AdminLecturesList}/>
-                <Route path = {`/courses/admin-course-list/:cid/lectures/add`} exact component = {AddLecture}/>
-                <Route path = {`/courses/admin-course-list/:cid/lectures/:lid` } exact component={AdminLecturesItem}/>
+                <Route path = '/courses/admin-course-list/cid=:cid' exact component = {AdminCourseItem}/>
+                <Route path = {`/courses/admin-course-list/cid=:cid/lectures`} exact component = {AdminLecturesList}/>
+                <Route path = {`/courses/admin-course-list/cid=:cid/lectures/add`} exact component = {AddLecture}/>
+                <Route path = {`/courses/admin-course-list/cid=:cid/lectures/lid=:lid` } exact component={AdminLecturesItem}/>
             </Switch>
             
         </div>

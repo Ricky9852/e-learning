@@ -1,13 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { startEditAdminCourses } from "../../actions/adminCoursesAction";
+import { startEditAdminLectures, startGetAdminLectures } from "../../actions/adminLecturesAction";
 import LecturesForm from "./LecturesForm";
 
 const EditLecture = props =>{
     const { lecture, cid, lid, handleEdit } = props
     const dispatch = useDispatch()
     const handleSubmit = (formData) =>{
-        // dispatch(startEditAdminCourses(formData, lid, cid))
+        delete formData.comments
+        // dispatch(startGetAdminLectures())
+        dispatch(startEditAdminLectures(formData, cid, lid))
         handleEdit()
     }
     const handleCancel = () => {

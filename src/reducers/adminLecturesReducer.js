@@ -16,6 +16,7 @@ export const adminLecturesReducer = ( state = lecturesInitialState, action) => {
             return {...state, data: [...action.payload]}
         }
         case 'EDIT_LECTURES': {
+            console.log('unedited state',state.data)
             const result = state.data.map((lecture) => {
                 if(lecture._id === action.payload._id){
                     return {...lecture, ...action.payload}
@@ -23,6 +24,7 @@ export const adminLecturesReducer = ( state = lecturesInitialState, action) => {
                     return {...lecture}
                 }
             })
+            console.log('result in edit lec',result)
             return {...state, data: [...result]}
         }
         case 'REMOVE_LECTURES': {

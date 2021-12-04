@@ -5,7 +5,7 @@ import AdminNav from './AdminNav'
 const StudentsCRUD = props =>{
     // const { props } = props
     return (
-        <div style={{textAlign:'center'}}>
+        <div>
             <AdminNav props={props}/>
         </div>
     )

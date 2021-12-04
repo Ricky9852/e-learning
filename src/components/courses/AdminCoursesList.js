@@ -45,8 +45,8 @@ const AdminCoursesList = props => {
                                         <td>{course.validity}</td>
                                         {/* <td>{course.releaseDate}</td> */}
                                         <td>{course.level}</td>
-                                        <td><Link to={`/courses/admin-course-list/${course._id}`}><button className="btn btn-info">Details</button></Link></td>
-                                        <td><Link to={`/courses/admin-course-list/${course._id}/lectures`}><button className="btn btn-info">Lectures</button></Link></td>
+                                        <td><Link to={`/courses/admin-course-list/cid=${course._id}`}><button className="btn btn-info">Details</button></Link></td>
+                                        <td><Link to={`/courses/admin-course-list/cid=${course._id}/lectures`}><button className="btn btn-info">Lectures</button></Link></td>
                                         <td><button className="btn btn-danger" onClick={()=>{handleRemove(course._id)}}>Remove</button></td>
                                     </tr>
                                 })}

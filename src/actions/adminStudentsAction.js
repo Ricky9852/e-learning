@@ -123,3 +123,21 @@ export const removeStudent = (result) => {
         payload: result
     }
 }
+
+export const startGetSingleAdminStudent = (id, handleSetStudent) => {
+    return (dispatch) => {
+        axios.get(`https://dct-e-learning.herokuapp.com/api/students/${id}`, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+            .then((response) => {
+                const studentData = response.data
+                handleSetStudent(studentData)
+                console.log('studentitem',studentData)
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+    }
+}

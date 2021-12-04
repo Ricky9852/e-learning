@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, withRouter } from "react-router-dom";
+import { Link, Route, withRouter, Switch } from "react-router-dom";
 import StudentsList from "./StudentsList";
 import StudentsRegister from "./StudentsRegister";
 import StudentItem from "./StudentItem";
@@ -7,14 +7,26 @@ import StudentItem from "./StudentItem";
 const AdminNav = props =>{
     return (
         <div>
-            <h1>Students</h1>
+            <div className="row">
+                <div className="col-md-3" >
+                    <h1>Students</h1>
+                </div>
+                <span className="col-md-6"></span>
+                <div className="col-md-3">
+                    <Link to='/students/list'><button className='btn btn-outline-primary'>Students' List</button></Link>
+                    <Link to='/students/register'><button className='btn btn-outline-primary'>Register New Student</button></Link>
+                </div>
+            </div>
+            
             {/* <Link to='/'>Students</Link> */} 
-            <Link to='/students/list'><button className='btn btn-outline-secondary'>Students' List</button></Link>
-            <Link to='/students/register'><button className='btn btn-outline-secondary'>Register New Student</button></Link>
+            
             {/* <Route path='/' exact component={StudentCRUD} /> */}
-            <Route path='/students/register' exact component={StudentsRegister} />
-            <Route path='/students/list' exact component={StudentsList} />
-            <Route path='/students/list/:id' component={StudentItem} exact/>
+            <Switch>
+                <Route path='/students/register' exact component={StudentsRegister} />
+                <Route path='/students/list' exact component={StudentsList} />
+                <Route path='/students/list/sid=:id' component={StudentItem} exact/>
+            </Switch>
+            
         </div>
     )
 }

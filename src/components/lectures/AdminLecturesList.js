@@ -21,7 +21,7 @@ const AdminLecturesList = props => {
     return (
         <div>
             <h1> Lectures </h1>
-            <Link to={`/courses/admin-course-list/${cid}/lectures/add`}><button className='btn btn-primary'>Add New Lectures</button></Link><br/>
+            <Link to={`/courses/admin-course-list/cid=${cid}/lectures/add`}><button className='btn btn-primary'>Add New Lectures</button></Link><br/>
             <div>
                 <table className='table table-striped'>
                 <thead >
@@ -41,7 +41,7 @@ const AdminLecturesList = props => {
                                 <td>{lecture.title}</td>
                                 <td>{lecture.assetType}</td>
                                 {/* <td>{lecture.course}</td> */}
-                                <td><Link to={`/courses/admin-course-list/${cid}/lectures/${lecture._id}`}><button className="btn btn-info">Details</button></Link></td>
+                                <td><Link to={`/courses/admin-course-list/cid=${cid}/lectures/lid=${lecture._id}`}><button className="btn btn-info">Details</button></Link></td>
                                 <td><button className="btn btn-danger" onClick={()=>{handleRemove(lecture._id)}}>Remove</button></td>
                             </tr>
                         })}

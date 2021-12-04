@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import EditStudent from "./EditStudent";
 import { startGetAdminCourses } from "../../actions/adminCoursesAction";
+import { startGetSingleAdminStudent } from "../../actions/adminStudentsAction";
 
 const StudentItem = props =>{
     const {id} = props.match.params
@@ -24,21 +25,27 @@ const StudentItem = props =>{
         console.log('enrolled courses',result);
         return result != undefined ? result.name : ''
     }
+    const handleSetStudent = (studentData) => {
+        setStudent(studentData)
+    }
     useEffect(()=>{
         dispatch(startGetAdminCourses())
-        axios.get(`https://dct-e-learning.herokuapp.com/api/students/${id}`, {
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            }
-        })
-            .then((response) => {
-                const result = response.data
-                console.log('studentitem',result)
-                setStudent(result)
-            })
-            .catch((err) => {
-                alert(err.message)
-            })
+        if(Object.keys(student).length===0){
+            dispatch(startGetSingleAdminStudent(id, handleSetStudent))
+        }
+        // axios.get(`https://dct-e-learning.herokuapp.com/api/students/${id}`, {
+        //     headers: {
+        //         'Authorization': localStorage.getItem('token')
+        //     }
+        // })
+        //     .then((response) => {
+        //         const result = response.data
+        //         console.log('studentitem',result)
+        //         setStudent(result)
+        //     })
+        //     .catch((err) => {
+        //         alert(err.message)
+        //     })
         // const result=students.find((ele)=>{
         //     return ele._id===id
         // })

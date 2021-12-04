@@ -124,22 +124,27 @@ const LecturesForm = props => {
 
                     <div className = 'mb-3' >
                         {
-                            assetType === "video" || assetType === "" || assetType === "text"  ? 
-                            ( 
+                            // assetType === "video" || assetType === "" || assetType === "text"  ? 
+                            // ( 
                                 <input type = "text" value = {assetURL} name = 'assetURL' onChange = {handleChange} placeholder = "Enter Lecture Asset Url*"/> 
-                            ) : (
-                                <div>
-                                    <label>Select Lecture Asset :</label> 
-                                    <input type = "file" value = {assetURL} name = 'assetURL' onChange = {handleChange} />
-                                </div>
-                            )
+                            // ) : (
+                            //     <div>
+                            //         <label>Select Lecture Asset :</label> 
+                            //         <input type = "file" value = {assetURL} name = 'assetURL' onChange = {handleChange} />
+                            //     </div>
+                            // )
                         }
                         <br/>
                         { lecturesErrors.assetURL && <span style={{color:'red'}}>{lecturesErrors.assetURL}</span> }
                     </div>
 
-                    <div className = 'mb-3' >
-                        <input type = "text" value = {comments} name = 'comments' onChange = {handleChange} placeholder = "Enter Lecture comments"/>
+                    <div>
+                        {
+                            Boolean(_id)===false && 
+                            <div className = 'mb-3' >
+                                <input type = "text" value = {comments} name = 'comments' onChange = {handleChange} placeholder = "Enter Lecture comments"/>
+                            </div>
+                        }
                     </div>
                     
                     <div className = 'mb-3' >

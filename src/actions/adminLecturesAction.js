@@ -93,18 +93,20 @@ export const removeLectures = (result) => {
     }
 }
 
-export const startEditAdminLectures = (formData, cid, _id) => {
-    console.log("formdata in action",formData)
+export const startEditAdminLectures = (formData, cid, lid) => {
+    console.log("formdata in edit lec action",formData)
+    // console.log('cid',cid)
+    // console.log('lid',lid)
     return (dispatch) => {
-        axios.put(`https://dct-e-learning.herokuapp.com/api/courses/${cid}/lectures/${_id}`, formData, {
+        axios.put(`https://dct-e-learning.herokuapp.com/api/courses/${cid}/lectures/${lid}`, formData, {
             headers: {
                 'Authorization': localStorage.getItem('token')
             }
         })
             .then((response) => {
                 const result = response.data
-                console.log(result)
-                dispatch(startGetAdminLectures())
+                console.log('edited lecture result',result)
+                // dispatch(startGetAdminLectures(cid))
                 dispatch(editAdminLectures(result))
                 alert('lecture updated successfully')
             })
@@ -118,5 +120,23 @@ export const editAdminLectures = result => {
     return {
         type: 'EDIT_LECTURES',
         payload: result
+    }
+}
+
+export const startGetSingleAdminLecture = (cid, lid, handleSetLecture) => {
+    return (dispatch)=>{
+        axios.get(`https://dct-e-learning.herokuapp.com/api/courses/${cid}/lectures/${lid}`, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+            .then((response) => {
+                const lectureData = response.data
+                handleSetLecture(lectureData)
+                console.log('lectureitem',lectureData)
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
     }
 }
