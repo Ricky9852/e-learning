@@ -5,6 +5,7 @@ import { adminLecturesReducer } from '../reducers/adminLecturesReducer'
 import  { adminReducer, loggedReducer } from '../reducers/adminReducer'
 import { adminStudentReducer } from '../reducers/adminStudentsReducer'
 import { studentCoursesReducer } from '../reducers/studentCoursesReducer'
+import { studentLecturesReducer } from '../reducers/studentLecturesReducer'
 import { studentLoggedReducer, studentReducer } from '../reducers/studentReducer'
 
 const configureState = () => {
@@ -16,7 +17,8 @@ const configureState = () => {
         studentIsLoggedIn: studentLoggedReducer,
         adminCourses: adminCoursesReducer,
         studentCourses: studentCoursesReducer,
-        adminLectures: adminLecturesReducer
+        adminLectures: adminLecturesReducer,
+        studentLectures: studentLecturesReducer
     }), applyMiddleware(thunk))
     return store
 }

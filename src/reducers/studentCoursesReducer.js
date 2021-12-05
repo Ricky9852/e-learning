@@ -6,9 +6,9 @@ const coursesInitialState = {
 
 export const studentCoursesReducer = ( state = coursesInitialState, action) => {
     switch(action.type){
-        // case 'SET_ERRORS': {
-        //     return {...state, errors: {...action.payload}}
-        // }
+        case 'SET_ERRORS': {
+            return {...state, errors: {...action.payload}}
+        }
         case 'GET_STUDENTCOURSES': {
             return {...state, data: [...action.payload]}
         }

@@ -10,6 +10,9 @@ import AdminCourseItem from "./AdminCourseItem";
 import AdminLecturesList from "../lectures/AdminLecturesList";
 import AddLecture from "../lectures/AddLecture";
 import AdminLecturesItem from "../lectures/AdminLecturesItem";
+import StudentCourseItem from "./StudentCourseItem";
+import StudentLecturesList from "../lectures/StudentsLecturesList";
+import StudentLecturesItem from "../lectures/StudentLecturesItem";
 
 const Courses = ( props ) => {
     const isLoggedIn = useSelector((state) => {
@@ -40,10 +43,12 @@ const Courses = ( props ) => {
                 </div>
             </div>
             
-            
             <Switch>
                 <Route path = '/courses/admin-course-list' exact component = {AdminCoursesList}/>
                 <Route path = '/courses/student-course-list' exact component = {StudentCoursesList}/>
+                <Route path = '/courses/student-course-list/cid=:cid' exact component = {StudentCourseItem}/>
+                <Route path = {`/courses/student-course-list/cid=:cid/lectures`} exact component = {StudentLecturesList}/>
+                {/* <Route path = {`/courses/student-course-list/cid=:cid/lectures/lid=:lid` } exact component={StudentLecturesItem}/> */}
                 <Route path ='/courses/addcourse' component = {AddForm} exact/>
                 <Route path = '/courses/admin-course-list/cid=:cid' exact component = {AdminCourseItem}/>
                 <Route path = {`/courses/admin-course-list/cid=:cid/lectures`} exact component = {AdminLecturesList}/>

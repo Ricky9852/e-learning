@@ -56,7 +56,6 @@ const StudentItem = props =>{
     // console.log(localStorage.getItem('student'));
     return (
         <div>
-            {/* <button onClick={props.history.push('/students')}>Back</button> */}
             <div style={{textAlign:'center'}}>
                 <h2>Student Details</h2>
                 <button onClick={handleEdit} className="btn btn-outline-primary">Edit</button>
@@ -74,7 +73,7 @@ const StudentItem = props =>{
                                         <div>Enrolled Courses:
                                             <ol>
                                                 {student.courses.map((ele,i)=>{
-                                                    return <li key={i}>{enrolledCourses(ele.course)}</li>
+                                                    return <li key={ele.course}>{enrolledCourses(ele.course)}</li>
                                                 })}
                                             </ol>
                                         </div>
@@ -96,7 +95,6 @@ const StudentItem = props =>{
                 )}
             </div>
         </div>
-        
     )
 }
 

@@ -73,15 +73,15 @@ const AdminCourseItem = props =>{
                                 <div>
                                     <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
                                         <div className="card-body" >
-                                            <p>Course Name:{course.name}</p>
-                                            <p>Course Description:{course.description}</p>
-                                            <p>Course Duration:{course.duration}</p>
+                                            <p>Course Name: {course.name}</p>
+                                            <p>Course Description: {course.description}</p>
+                                            <p>Course Duration: {course.duration} months</p>
                                             {/* <p>Course Release Date:{course.releaseDate}</p> */}
-                                            <p>Course Category:{course.category}</p>
-                                            <p>Course Validity:{course.validity}</p>
-                                            <p>Course Level:{course.level}</p>
-                                            <p>Course Author:{course.author}</p>
-                                            <p>Course Deletion:{String(course.isDelete)}</p>
+                                            <p>Course Category: {course.category}</p>
+                                            <p>Course Validity: {course.validity} years</p>
+                                            <p>Course Level: {course.level}</p>
+                                            <p>Course Author: {course.author}</p>
+                                            <p>Course Deletion: {String(course.isDelete)}</p>
                                             {/* <p>Course Created At:{course.createdAt}</p> */}
                                             {/* <p>Course Updated At:{course.updatedAt}</p> */}
                                             <div>Students Enrolled:

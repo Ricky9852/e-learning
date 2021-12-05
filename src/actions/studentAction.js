@@ -1,5 +1,13 @@
 import axios from "axios"
 import Swal from 'sweetalert2'
+import { getStudents } from "./adminStudentsAction"
+
+export const startSetErrors = (errors) => {
+    return {
+        type: 'SET_ERRORS',
+        payload: errors
+    }
+}
 
 export const startLogStudent = (formData, redirect) => {
     return (dispatch) => {
@@ -40,5 +48,35 @@ export const startLogStudent = (formData, redirect) => {
 export const logStudent = () => {
     return {
         type: 'STUDENT_LOG'
+    }
+}
+
+export const startGetStudent = (sid) => {
+    return (dispatch) => {
+        axios.get(`https://dct-e-learning.herokuapp.com/api/students/${sid}`, {
+            headers: {
+                'Authorization': localStorage.getItem('stoken')
+            }
+        })
+            .then((response) => {
+                const result = response.data
+                console.log(result)
+                dispatch(getStudent(result))
+            })
+            .catch((err) => {
+                // alert(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${err.message}`
+                  })
+            })
+    }
+}
+
+export const getStudent = result => {
+    return {
+        type: 'GET_STUDENT',
+        payload: result
     }
 }
