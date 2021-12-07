@@ -65,7 +65,7 @@ const NavBar = ( props ) => {
                                         // alert('successfullly logged out')
                                         Swal.fire(
                                             'Good job!',
-                                            'Logged in Successfully',
+                                            'Logged Out Successfully',
                                             'success'
                                           )
                                     }}>Logout</Link>
@@ -87,7 +87,12 @@ const NavBar = ( props ) => {
                                                     localStorage.removeItem('stoken')
                                                     props.history.push('/')
                                                     dispatch(logStudent())
-                                                    alert('successfullly logged out')
+                                                    // alert('successfullly logged out')
+                                                    Swal.fire(
+                                                        'Good job!',
+                                                        'Successfully Logged Out',
+                                                        'success'
+                                                      )
                                                 }}>Logout</Link>
                                             </li>
                                         </>

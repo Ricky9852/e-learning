@@ -97,7 +97,7 @@ const LecturesForm = props => {
 
     return (
         <div style={{textAlign:'center'}}>
-            <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
+            <div className="mx-auto card bg-light" style={{textAlign:'center',width:"400px"}}>
                 <div className="card-body" >
                     <form className = 'g-col-4'>
                     <div className = 'mb-3' >

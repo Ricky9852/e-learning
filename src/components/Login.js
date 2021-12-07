@@ -75,7 +75,7 @@ const Login = props => {
 
     return (
         <div>
-                <div className="col-md-4 card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
+                <div className="mx-auto card bg-light" style={{textAlign:'center', width:"400px"}}>
                 <div className="card-body" >
                     <h1>Login</h1>
                     <h3>User Type : { (adminButton) ? <>Admin</> : <>Student</>}</h3><button className="btn btn-outline-info" onClick={handleAdminButton}>Admin</button><button className="btn btn-outline-info" onClick={handleStudentButton}>Student</button>

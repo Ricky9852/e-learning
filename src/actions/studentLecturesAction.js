@@ -33,7 +33,7 @@ export const startGetStudentLectures = (cid) => {
 
 export const getStudentLectures = result => {
     return {
-        type: 'GET_ADMINLECTURES',
+        type: 'GET_STUDENTLECTURES',
         payload: result
     }
 }
@@ -42,7 +42,7 @@ export const startGetSingleStudentLecture = (cid, lid, handleSetLecture) => {
     return (dispatch)=>{
         axios.get(`https://dct-e-learning.herokuapp.com/api/courses/${cid}/lectures/${lid}`, {
             headers: {
-                'Authorization': localStorage.getItem('token')
+                'Authorization': localStorage.getItem('stoken')
             }
         })
             .then((response) => {

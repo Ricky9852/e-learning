@@ -48,21 +48,21 @@ const AdminLecturesItem = props => {
         <div style={{textAlign:'center'}}>
             <h2>Lecture Details</h2>
                 <button onClick={handleEdit} className="btn btn-outline-primary">Edit</button>
+                <button className='btn btn-outline-secondary' onClick={handleBack}>Back</button>
                 {toggle ? (
                     <div>
                         {Object.keys(lecture).length !==0 ? (
                             <div>
-                                <div className="card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
+                                <div className="mx-auto card bg-light" style={{textAlign:'center',width:"400px"}}>
                                     <div className="card-body" >
                                         <p>Lecture Title:{lecture.title}</p>
                                         <p>Lecture Description:{lecture.description}</p>
-                                        {/* <p>Lecture Course:{lecture.course}</p> */}
                                     </div>
                                 </div>
                                 {/* <div className="card bg-light" style={{ left:"340px" , maxWidth:"675px"}}> */}
                                 {lecture.assetType === 'video' && 
                                     <div className="card bg-light" >
-                                        <div className="card-body" >
+                                        <div className="mx-auto card-body" >
                                             {lecture.assetType === 'video' && <ReactPlayer url={lecture.assetURL} />}
                                         </div>
                                     </div>
@@ -90,7 +90,6 @@ const AdminLecturesItem = props => {
                         <EditLecture lecture={lecture} lid={lid} cid={cid} handleEdit={handleEdit} toggle={toggle}/>
                     </div>
                 )}
-            <button className='btn btn-outline-secondary' onClick={handleBack}>Back</button>
         </div>
         
     )

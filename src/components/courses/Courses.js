@@ -48,7 +48,7 @@ const Courses = ( props ) => {
                 <Route path = '/courses/student-course-list' exact component = {StudentCoursesList}/>
                 <Route path = '/courses/student-course-list/cid=:cid' exact component = {StudentCourseItem}/>
                 <Route path = {`/courses/student-course-list/cid=:cid/lectures`} exact component = {StudentLecturesList}/>
-                {/* <Route path = {`/courses/student-course-list/cid=:cid/lectures/lid=:lid` } exact component={StudentLecturesItem}/> */}
+                <Route path = {`/courses/student-course-list/cid=:cid/lectures/lid=:lid` } exact component={StudentLecturesItem}/>
                 <Route path ='/courses/addcourse' component = {AddForm} exact/>
                 <Route path = '/courses/admin-course-list/cid=:cid' exact component = {AdminCourseItem}/>
                 <Route path = {`/courses/admin-course-list/cid=:cid/lectures`} exact component = {AdminLecturesList}/>

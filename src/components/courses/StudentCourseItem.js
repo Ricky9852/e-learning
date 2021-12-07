@@ -27,7 +27,7 @@ const StudentCourseItem = props =>{
                 <div>
                     {Object.keys(course).length !== 0 ? (
                         <div>
-                            <div className=" card bg-light" style={{textAlign:'center', left:"475px",width:"400px"}}>
+                            <div className="mx-auto card bg-light" style={{textAlign:'center',width:"400px"}}>
                                 <div className="card-body" >
                                     <p>Course Name:{course.name}</p>
                                     <p>Course Description:{course.description}</p>
