@@ -69,6 +69,7 @@ const AdminCoursesList = props => {
                                     })}
                             </tbody>
                         </table> */}
+                        <div style={{textAlign:'center'}}><Link to = '/courses/addcourse'><button className = 'btn btn-outline-primary'>Add New Course</button></Link></div>
                         <div className="row">
                             {
                                 adminCourses.map((course) => {

@@ -1,22 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link,Route } from "react-router-dom";
 import { startGetStudentLectures } from "../../actions/studentLecturesAction";
+import NewStudentLecturesItem from "./NewStudentLecturesItem";
+// import './StudentLecturesList.css'
 
 const StudentLecturesList = props => {
     const {cid} = props.match.params
+    const [show,setShow] = useState(false)
+    const [lectureID,setLectureID] =useState('')
     // localStorage.setItem('cid',cid)
     const studentLectures = useSelector((state)=> {
         return state.studentLectures.data
     })
+    let lid=''
+    const handleShow = (lecture) =>{
+        setShow(false)
+        lid=lecture._id
+        setLectureID(lid)
+        setShow(true)
+    }
+    const handleBack = () => {
+        props.history.push(`/courses/student-course-list/cid=${cid}/lectures`)
+    }
     const dispatch = useDispatch()
     useEffect(()=> {
         dispatch(startGetStudentLectures(cid))
     }, [])
     return (
         <div style={{textAlign:'center'}}>
-            <h1> Lectures </h1>
+            {/* <h1> Lectures </h1> */}
+            <div className="sidebar">
+            {studentLectures.map((lecture,i)=>{
+                return <div key={lecture._id}>
+                    <a onClick={()=>{handleShow(lecture)}}>{lecture.title.toUpperCase()}</a>
+                </div>
+            })}
+            </div>
             <div>
+                {
+                    show && <NewStudentLecturesItem lid={lectureID} cid={cid} handleBack={handleBack}/>
+                }
+            </div>
+            {/* <div>
                 { studentLectures.length !==0 ? (
                     <table className='table table-striped'>
                         <thead >
@@ -41,7 +67,7 @@ const StudentLecturesList = props => {
                 ) : (
                     <p>Loading...</p>
                 )}
-            </div>
+            </div> */}
         </div>
     )
 }

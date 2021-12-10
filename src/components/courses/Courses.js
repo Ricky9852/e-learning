@@ -29,17 +29,17 @@ const Courses = ( props ) => {
     }, [])
     return (
         <div>
-            <div className="row">
+            <div className="row" >
                 <div className="col-md-3" >
-                    <h1>Courses</h1>
+                    {/* <h1>Courses</h1> */}
                 </div>
                 <span className="col-md-6"></span>
                 <div className="col-md-3">
                     { isLoggedIn && <div>
-                        <Link to = '/courses/admin-course-list'><button className = 'btn btn-outline-primary'>Course List</button></Link>
-                        <Link to = '/courses/addcourse'><button className = 'btn btn-outline-primary'>Add New Course</button></Link>
+                        {/* <Link to = '/courses/admin-course-list'><button className = 'btn btn-outline-primary'>Course List</button></Link> */}
+                        {/* <Link to = '/courses/addcourse'><button className = 'btn btn-outline-primary'>Add New Course</button></Link> */}
                     </div> }
-                    { studentIsLoggedIn && <Link to = '/courses/student-course-list'><button className = 'btn btn-primary'>Course List</button></Link> }
+                    {/* { studentIsLoggedIn && <Link to = '/courses/student-course-list'><button className = 'btn btn-primary'>Course List</button></Link> } */}
                 </div>
             </div>
             
@@ -48,7 +48,7 @@ const Courses = ( props ) => {
                 <Route path = '/courses/student-course-list' exact component = {StudentCoursesList}/>
                 <Route path = '/courses/student-course-list/cid=:cid' exact component = {StudentCourseItem}/>
                 <Route path = {`/courses/student-course-list/cid=:cid/lectures`} exact component = {StudentLecturesList}/>
-                <Route path = {`/courses/student-course-list/cid=:cid/lectures/lid=:lid` } exact component={StudentLecturesItem}/>
+                <Route path = {`/courses/student-course-list/cid=:cid/lectures/lid=:lid` } component={StudentLecturesItem}/>
                 <Route path ='/courses/addcourse' component = {AddForm} exact/>
                 <Route path = '/courses/admin-course-list/cid=:cid' exact component = {AdminCourseItem}/>
                 <Route path = {`/courses/admin-course-list/cid=:cid/lectures`} exact component = {AdminLecturesList}/>

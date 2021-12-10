@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureState from './store/configureState';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 
 const store = configureState()
 

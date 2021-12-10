@@ -52,10 +52,10 @@ const NavBar = ( props ) => {
                                     <Link to='/account' className='nav-link'>Account</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/students' className='nav-link'>Students</Link>
+                                    <Link to='/students/list' className='nav-link'>Students</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/courses' className='nav-link'>Courses</Link>
+                                    <Link to='/courses/admin-course-list' className='nav-link'>Courses</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to = '#' className='nav-link' onClick = {()=>{
@@ -80,7 +80,7 @@ const NavBar = ( props ) => {
                                                 <Link to='/student-account' className='nav-link'>Account</Link>
                                             </li>
                                             <li className="nav-item">
-                                                <Link to='/courses' className='nav-link'>Courses</Link>
+                                                <Link to='/courses/student-course-list' className='nav-link'>Courses</Link>
                                             </li>
                                             <li className="nav-item">
                                                 <Link to = '#' className='nav-link' onClick = {()=>{

@@ -69,16 +69,16 @@ const AdminLecturesItem = props => {
                                 }
                                 
                                 {lecture.assetType === 'pdf' && 
-                                            <div
-                                                style={{
-                                                    border: '1px solid rgba(0, 0, 0, 0.3)',
-                                                    height: '650px'
-                                                }}
-                                            >
-                                            <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-                                                <Viewer fileUrl={lecture.assetURL} plugins={[zoomPluginInstance]}/>
-                                            </Worker>
-                                            </div>
+                                    <div
+                                        style={{
+                                            border: '1px solid rgba(0, 0, 0, 0.3)',
+                                            height: '650px'
+                                        }}
+                                    >
+                                    <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+                                        <Viewer fileUrl={lecture.assetURL} plugins={[zoomPluginInstance]}/>
+                                    </Worker>
+                                    </div>
                                 }
                             </div>
                         ) : (

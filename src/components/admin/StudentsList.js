@@ -34,8 +34,10 @@ const StudentsList = props =>{
                 <span className="col-md-3">
                     <h2>Students List</h2>
                 </span>
-                <span className="col-md-6"></span>
-                <span className="col-md-3">
+                <span className="col-md-4"></span>
+                {/* <span className="col-md-2"><Link to='/students/register'><button className='btn btn-outline-primary'>Register New Student</button></Link> </span> */}
+                <span className="col-md-5">
+                <Link to='/students/register'><button className='btn btn-outline-primary'>Register New Student</button></Link> 
                     <input type="text" placeholder="search students by name" value={searchText} onChange={handleSearchChange}/>
                 </span>
             </div>

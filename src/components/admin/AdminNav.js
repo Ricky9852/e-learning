@@ -13,8 +13,8 @@ const AdminNav = props =>{
                 </div>
                 <span className="col-md-6"></span>
                 <div className="col-md-3">
-                    <Link to='/students/list'><button className='btn btn-outline-primary'>Students' List</button></Link>
-                    <Link to='/students/register'><button className='btn btn-outline-primary'>Register New Student</button></Link>
+                    {/* <Link to='/students/list'><button className='btn btn-outline-primary'>Students' List</button></Link> */}
+                    {/* <Link to='/students/register'><button className='btn btn-outline-primary'>Register New Student</button></Link> */}
                 </div>
             </div>
             

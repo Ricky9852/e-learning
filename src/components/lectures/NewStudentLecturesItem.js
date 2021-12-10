@@ -7,22 +7,23 @@ import { zoomPlugin } from '@react-pdf-viewer/zoom';
 import '@react-pdf-viewer/zoom/lib/styles/index.css';
 import { startGetSingleStudentLecture } from "../../actions/studentLecturesAction";
 
-const StudentLecturesItem = props => {
-    const {lid, cid} = props.match.params
+const NewStudentLecturesItem = props => {
+    const {lid, cid, handleBack: handleReverse} = props
     const zoomPluginInstance = zoomPlugin();
     const dispatch = useDispatch()
     const [lecture,setLecture] = useState({})
     const handleBack = () => {
-        props.history.push(`/courses/student-course-list/cid=${cid}/lectures`)
+        // props.history.push(`/courses/student-course-list/cid=${cid}/lectures`)
+        handleReverse()
     }
     const handleSetLecture = (lectureData) => {
         setLecture(lectureData)
     }
     useEffect(()=> {
-        if(Object.keys(lecture).length===0){
+        // if(Object.keys(lecture).length===0){
             dispatch(startGetSingleStudentLecture(cid, lid, handleSetLecture))
-        }
-    },[])
+        // }
+    },[lid])
 
     return (
         <div style={{textAlign:'center'}}>
@@ -38,7 +39,7 @@ const StudentLecturesItem = props => {
                                 </div>
                                 {/* <div className="card bg-light" style={{ left:"340px" , maxWidth:"675px"}}> */}
                                 {lecture.assetType === 'video' && 
-                                    <div className="card bg-light" >
+                                    <div className="mx-auto card bg-light" style={{maxWidth:'800px'}}>
                                         <div className="mx-auto card-body" >
                                             {lecture.assetType === 'video' && <ReactPlayer url={lecture.assetURL} />}
                                         </div>
@@ -46,10 +47,12 @@ const StudentLecturesItem = props => {
                                 }
                                 
                                 {lecture.assetType === 'pdf' && 
-                                            <div
+                                            <div className="mx-auto"
                                                 style={{
                                                     border: '1px solid rgba(0, 0, 0, 0.3)',
-                                                    height: '650px'
+                                                    height: '650px',
+                                                    maxWidth:'900px'
+                                                    
                                                 }}
                                             >
                                             <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
@@ -62,10 +65,10 @@ const StudentLecturesItem = props => {
                             <p>Loading...</p>
                         )}
                     </div>
-            <button className='btn btn-outline-secondary' onClick={handleBack}>Back</button>
+            {/* <button className='btn btn-outline-secondary' onClick={handleBack}>Back</button> */}
         </div>
         
     )
 }
 
-export default StudentLecturesItem
+export default NewStudentLecturesItem
