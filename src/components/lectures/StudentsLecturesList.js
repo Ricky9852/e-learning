@@ -28,16 +28,16 @@ const StudentLecturesList = props => {
         dispatch(startGetStudentLectures(cid))
     }, [])
     return (
-        <div style={{textAlign:'center'}}>
+        <div style={{textAlign:'center'}} className="row">
             {/* <h1> Lectures </h1> */}
-            <div className="sidebar">
-            {studentLectures.map((lecture,i)=>{
-                return <div key={lecture._id}>
-                    <a onClick={()=>{handleShow(lecture)}}>{lecture.title.toUpperCase()}</a>
-                </div>
-            })}
+            <div className="col-md-2 sidebar">
+                {studentLectures.map((lecture,i)=>{
+                    return <div key={lecture._id}>
+                        <a onClick={()=>{handleShow(lecture)}}>{lecture.title.toUpperCase()}</a>
+                    </div>
+                })}
             </div>
-            <div>
+            <div className="col-md-10 ms-auto" style={{alignItems:'center'}}>
                 {
                     show && <NewStudentLecturesItem lid={lectureID} cid={cid} handleBack={handleBack}/>
                 }

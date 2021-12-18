@@ -26,21 +26,23 @@ const NewStudentLecturesItem = props => {
     },[lid])
 
     return (
-        <div style={{textAlign:'center'}}>
-            <h2>Lecture Details</h2>
+        <div >
+            {/* <h2>Lecture Details</h2> */}
+            <h2>{lecture.title.toUpperCase()}</h2>
                     <div>
                         {Object.keys(lecture).length !==0 ? (
                             <div>
-                                <div className="mx-auto card bg-light" style={{textAlign:'center',width:"400px"}}>
+                                {/* <div className="mx-auto card bg-light" style={{textAlign:'center',width:"400px"}}>
                                     <div className="card-body" >
                                         <p>Lecture Title:{lecture.title}</p>
                                         <p>Lecture Description:{lecture.description}</p>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <div className="card bg-light" style={{ left:"340px" , maxWidth:"675px"}}> */}
                                 {lecture.assetType === 'video' && 
                                     <div className="mx-auto card bg-light" style={{maxWidth:'800px'}}>
                                         <div className="mx-auto card-body" >
+                                            {/* {lecture.assetType === 'video' && <ReactPlayer width={'auto'} height={'auto'} url={lecture.assetURL} />} */}
                                             {lecture.assetType === 'video' && <ReactPlayer url={lecture.assetURL} />}
                                         </div>
                                     </div>
@@ -51,7 +53,7 @@ const NewStudentLecturesItem = props => {
                                                 style={{
                                                     border: '1px solid rgba(0, 0, 0, 0.3)',
                                                     height: '650px',
-                                                    maxWidth:'900px'
+                                                    maxWidth:'auto'
                                                     
                                                 }}
                                             >

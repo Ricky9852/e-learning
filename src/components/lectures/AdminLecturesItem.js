@@ -63,7 +63,7 @@ const AdminLecturesItem = props => {
                                 {lecture.assetType === 'video' && 
                                     <div className="card bg-light" >
                                         <div className="mx-auto card-body" >
-                                            {lecture.assetType === 'video' && <ReactPlayer url={lecture.assetURL} />}
+                                            <ReactPlayer url={lecture.assetURL} />
                                         </div>
                                     </div>
                                 }

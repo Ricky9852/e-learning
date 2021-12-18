@@ -37,7 +37,8 @@ const NavBar = ( props ) => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
             <div className="container-fluid">
-                <div className="collapse navbar-collapse" id="navbarSupportedContent" >
+                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent" > */}
+                <div id="navbarSupportedContent" >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0" >
                     <li className="nav-item">
                         <Link to='/' className='nav-link'><h4 style={{color:'white'}}>EduComm</h4></Link>

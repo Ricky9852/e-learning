@@ -42,10 +42,10 @@
  .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 240px;
   background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
+  position: absolute;
+  height: 820px;
   overflow: auto;
 }
 
