@@ -28,7 +28,7 @@ const NewStudentLecturesItem = props => {
     return (
         <div >
             {/* <h2>Lecture Details</h2> */}
-            <h2>{lecture.title.toUpperCase()}</h2>
+            <h2>{lecture.title}</h2>
                     <div>
                         {Object.keys(lecture).length !==0 ? (
                             <div>
